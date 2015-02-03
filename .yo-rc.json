@@ -1,0 +1,34 @@
+{
+  "generator-rf": {
+    "appname": "crochet",
+    "mkTestDirs": true,
+    "description": "A React/Flux app generate by RF, powered with JavaScript-6to5",
+    "dialect": "JavaScript-6to5",
+    "scriptSuffix": ".js",
+    "testFileExtensions": [
+      "js"
+    ],
+    "dialectModuleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "stylesheet": "SCSS",
+    "stylesheetSuffix": ".scss",
+    "devDependencies": {
+      "css-loader": "*",
+      "file-loader": "*",
+      "jest-cli": "*",
+      "react-hot-loader": "^1.1.4",
+      "react-tools": "^0.12.2",
+      "style-loader": "*",
+      "webpack-dev-server": "^1.7.0",
+      "webpack": "^1.4.14",
+      "6to5-loader": "*",
+      "6to5-jest": "*",
+      "sass-loader": "*"
+    },
+    "dialectTest": ".jsx?",
+    "dialectLoader": "react-hot!6to5",
+    "stylesheetLoader": "style!css!sass?outputStyle=expanded"
+  }
+}

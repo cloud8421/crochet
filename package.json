@@ -1,0 +1,52 @@
+{
+  "name": "crochet",
+  "version": "0.0.0",
+  "description": "A React/Flux app generate by RF, powered with JavaScript-6to5",
+  "main": "build/bundle.js",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "lodash": "*",
+    "object-assign": "^2.0.0",
+    "react": "^0.12.2",
+    "react-router-component": "^0.23.2"
+  },
+  "devDependencies": {
+    "css-loader": "*",
+    "file-loader": "*",
+    "jest-cli": "*",
+    "react-hot-loader": "^1.1.4",
+    "react-tools": "^0.12.2",
+    "style-loader": "*",
+    "webpack-dev-server": "^1.7.0",
+    "webpack": "^1.4.14",
+    "6to5-loader": "*",
+    "6to5-jest": "*",
+    "sass-loader": "*"
+},
+  "scripts": {
+    "dev": "webpack-dev-server --colors --content-base ./build",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "testFileExtensions": [
+    "js"
+],
+    "moduleFileExtensions": [
+    "js",
+    "json"
+],
+    "globals": {
+      "SCRIPTS": "<rootDir>/src/scripts"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/node_modules/"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  }
+}
