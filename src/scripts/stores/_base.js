@@ -1,4 +1,4 @@
-import EventEmitter from "../utils/event-emitter";
+import { EventEmitter } from "events";
 
 const CHANGE_EVENT = 'change';
 
