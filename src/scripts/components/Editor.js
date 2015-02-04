@@ -1,30 +1,18 @@
 import React from 'react';
-import ColorPicker from 'react-simple-colorpicker';
 import Colors from './editor/Colors';
-
-let getInitialState = function() {
-  return {
-    color: this.props.initialColor
-  }
-}
+import Actions from '../actions/ColorActions';
 
 const Editor = React.createClass({
-  getInitialState,
   render (){
-    let previewStyle = {
-      backgroundColor: this.state.color
-    };
-
     return (
       <div>
-        <ColorPicker color={this.state.color} onChange={this.handleChange} />
-        <span className="color-preview" style={previewStyle}></span>
+        <button onClick={this.addNewColor}>Add a new color</button>
         <Colors />
       </div>
     );
   },
-  handleChange(color) {
-    this.setState({color: color});
+  addNewColor() {
+    Actions.addColor('#ABABAB');
   }
 });
 

@@ -1,5 +1,6 @@
 import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
+import ColorActionTypes from "../constants/ColorConstants";
 
 let colors = [];
 
@@ -19,7 +20,7 @@ Color.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch (action.type) {
-    case ActionTypes.ADD_COLOR:
+    case ColorActionTypes.ADD_COLOR:
       _addColor(action.color);
       Color.emitChange();
       break;

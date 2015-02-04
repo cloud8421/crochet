@@ -1,17 +1,37 @@
-import React from 'react/addons';
+import React from 'react';
+import ColorPicker from 'react-simple-colorpicker';
 
-const PureRenderMixin = React.addons.PureRenderMixin;
+let getInitialState = function() {
+  return {
+    editing: false,
+    color: this.props.color
+  }
+}
 
 const Color = React.createClass({
-  mixins: [PureRenderMixin],
+  getInitialState,
   render() {
+    var palette;
     var style = {
-      backgroundColor: this.props.color
+      backgroundColor: this.state.color
     };
 
+    if (this.state.editing) {
+      palette = <ColorPicker color={this.props.color} onChange={this.handleChange} />
+    }
+
     return (
-      <li style={style}></li>
+      <li>
+        {palette}
+        <span className="color-preview" style={style} onClick={this.toggleEditing}></span>
+      </li>
     )
+  },
+  handleChange(color) {
+    this.setState({color: color});
+  },
+  toggleEditing() {
+    this.setState({editing: !this.state.editing});
   }
 });
 

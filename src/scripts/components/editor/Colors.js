@@ -12,6 +12,12 @@ const Colors = React.createClass({
   getInitialState() {
     return _getState()
   },
+  componentDidMount() {
+    ColorStore.addChangeListener(this._onChange);
+  },
+  _onChange() {
+    this.setState(_getState());
+  },
   render() {
     let colors = this.state.colors.map(function(color) {
       return <ColorComponent key={color} color={color} />
