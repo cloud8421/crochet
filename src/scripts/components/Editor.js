@@ -1,5 +1,6 @@
 import React from 'react';
 import ColorPicker from 'react-simple-colorpicker';
+import Colors from './editor/Colors';
 
 let getInitialState = function() {
   return {
@@ -18,6 +19,7 @@ const Editor = React.createClass({
       <div>
         <ColorPicker color={this.state.color} onChange={this.handleChange} />
         <span className="color-preview" style={previewStyle}></span>
+        <Colors />
       </div>
     );
   },
