@@ -26,7 +26,8 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --colors --content-base ./build",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack --config webpack.config.js --progress --profile --colors"
   },
   "author": "",
   "license": "MIT",
