@@ -3,3 +3,15 @@
 body {
   background-color: #eee;
 }
+
+.grid {
+  display: flex;
+}
+
+.square {
+  margin-right: 0.2em;
+}
+
+.square div {
+  display: block;
+}
