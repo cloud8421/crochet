@@ -8,7 +8,8 @@
     "lodash": "*",
     "object-assign": "^2.0.0",
     "react": "^0.12.2",
-    "react-router-component": "^0.23.2"
+    "react-router-component": "^0.23.2",
+    "react-simple-colorpicker": "^1.0.1"
   },
   "devDependencies": {
     "css-loader": "*",
@@ -22,7 +23,7 @@
     "6to5-loader": "*",
     "6to5-jest": "*",
     "sass-loader": "*"
-},
+  },
   "scripts": {
     "dev": "webpack-dev-server --colors --content-base ./build",
     "test": "jest"
@@ -32,12 +33,12 @@
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
     "testFileExtensions": [
-    "js"
-],
+      "js"
+    ],
     "moduleFileExtensions": [
-    "js",
-    "json"
-],
+      "js",
+      "json"
+    ],
     "globals": {
       "SCRIPTS": "<rootDir>/src/scripts"
     },
