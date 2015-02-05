@@ -6,7 +6,9 @@ import ColorActionTypes from "../constants/ColorConstants";
 let colors = new Immutable.List([]);
 
 let _addColor = function(color) {
-  colors = colors.push(color);
+  if (!colors.contains(color)) {
+    colors = colors.push(color);
+  }
 }
 
 let _replaceColor = function(oldColor, newColor) {

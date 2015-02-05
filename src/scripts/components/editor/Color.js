@@ -4,8 +4,8 @@ import ColorActions from '../../actions/ColorActions';
 
 let getInitialState = function() {
   return {
-    editing: false,
-    color: this.props.color
+    editing: false
+    // color: this.props.color
   }
 }
 
@@ -14,11 +14,11 @@ const Color = React.createClass({
   render() {
     var palette;
     var style = {
-      backgroundColor: this.state.color
+      backgroundColor: this.props.color
     };
 
     if (this.state.editing) {
-      palette = <ColorPicker color={this.state.color} onChange={this.handleChange} />
+      palette = <ColorPicker color={this.props.color} onChange={this.handleChange} />
     }
 
     return (
@@ -29,7 +29,7 @@ const Color = React.createClass({
     )
   },
   handleChange(color) {
-    ColorActions.replaceColor(this.state.color, color);
+    ColorActions.replaceColor(this.props.color, color);
   },
   toggleEditing() {
     this.setState({editing: !this.state.editing});
