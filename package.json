@@ -5,6 +5,7 @@
   "main": "build/bundle.js",
   "dependencies": {
     "flux": "^2.0.1",
+    "immutable": "^3.6.2",
     "lodash": "*",
     "object-assign": "^2.0.0",
     "react": "^0.12.2",
