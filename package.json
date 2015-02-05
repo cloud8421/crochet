@@ -9,7 +9,8 @@
     "object-assign": "^2.0.0",
     "react": "^0.12.2",
     "react-router-component": "^0.23.2",
-    "react-simple-colorpicker": "^1.0.1"
+    "react-simple-colorpicker": "^1.0.1",
+    "udon": "^1.2.0"
   },
   "devDependencies": {
     "css-loader": "*",
