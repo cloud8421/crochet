@@ -1,11 +1,22 @@
+import Immutable from 'immutable';
 import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import ColorActionTypes from "../constants/ColorConstants";
 
-let colors = [];
+let colors = new Immutable.List([]);
 
 let _addColor = function(color) {
-  colors.push(color);
+  colors = colors.push(color);
+}
+
+let _replaceColor = function(oldColorIndex, newColor) {
+  colors = colors.update(oldColorIndex, function(_old) {
+    return newColor;
+  });
+}
+
+let _clearColors = function() {
+  colors = colors.clear();
 }
 
 class _Color extends BaseStore {
@@ -22,6 +33,14 @@ Color.dispatchToken = AppDispatcher.register(function(payload) {
   switch (action.type) {
     case ColorActionTypes.ADD_COLOR:
       _addColor(action.color);
+      Color.emitChange();
+      break;
+    case ColorActionTypes.REPLACE_COLOR:
+      _replaceColor(action.data.oldColorIndex, action.data.newColor);
+      Color.emitChange();
+      break;
+    case ColorActionTypes.CLEAR_COLORS:
+      _clearColors();
       Color.emitChange();
       break;
     default:

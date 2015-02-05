@@ -8,6 +8,20 @@ const Actions = {
       type: ColorActionTypes.ADD_COLOR,
       color: newColor
     });
+  },
+  replaceColor: function(oldColorIndex, newColor) {
+    AppDispatcher.handleViewAction({
+      type: ColorActionTypes.REPLACE_COLOR,
+      data: {
+        oldColorIndex: oldColorIndex,
+        newColor: newColor
+      }
+    });
+  },
+  clearColors: function() {
+    AppDispatcher.handleViewAction({
+      type: ColorActionTypes.CLEAR_COLORS
+    });
   }
 }
 
