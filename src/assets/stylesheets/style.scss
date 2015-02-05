@@ -6,12 +6,15 @@ body {
 
 .grid {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .square {
-  margin-right: 0.2em;
+  display: inline-block;
+  position: relative;
 }
 
 .square div {
   display: block;
+  position: absolute;
 }
