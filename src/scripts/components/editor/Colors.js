@@ -2,25 +2,23 @@ import React from 'react';
 import ColorStore from '../../stores/Color';
 import ColorComponent from './Color';
 
-let _getState = function() {
+let getState = function() {
   return {
-    colors: ColorStore.getColors()
+    colors: ColorStore.getColors().toArray()
   }
 }
 
 const Colors = React.createClass({
-  getInitialState() {
-    return _getState()
-  },
+  getInitialState: getState,
   componentDidMount() {
     ColorStore.addChangeListener(this._onChange);
   },
   _onChange() {
-    this.setState(_getState());
+    this.setState(getState());
   },
   render() {
     let colors = this.state.colors.map(function(color) {
-      return <ColorComponent key={color} color={color} />
+      return <ColorComponent color={color} />
     });
 
     return (

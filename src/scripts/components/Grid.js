@@ -1,25 +1,27 @@
 import React from 'react';
 import _ from 'lodash';
+import ColorStore from '../stores/Color';
 import Square from './Square';
 
-const COLORS = [
-  'blue',
-  'red',
-  'green',
-  'yellow',
-  'pink',
-  'brown'
-]
+let getState = function() {
+  let colors = ColorStore.getColors().toArray();
 
-let getInitialState = function() {
-  let randomized = _.times(36, _.partial(_.sample, COLORS, 6));
+  console.log(colors);
+
+  let randomized = _.times(36, _.partial(_.sample, colors, 6));
   return {
-    colorTriplets: randomized
+    colorTriplets: colors
   }
 }
 
 const Grid = React.createClass({
-  getInitialState,
+  getInitialState: getState,
+  componentDidMount() {
+    ColorStore.addChangeListener(this._onChange);
+  },
+  _onChange() {
+    this.setState(getState());
+  },
   render (){
     let length = this.state.colorTriplets.length;
     let style = {

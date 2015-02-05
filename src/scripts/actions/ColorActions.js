@@ -9,11 +9,11 @@ const Actions = {
       color: newColor
     });
   },
-  replaceColor: function(oldColorIndex, newColor) {
+  replaceColor: function(oldColor, newColor) {
     AppDispatcher.handleViewAction({
       type: ColorActionTypes.REPLACE_COLOR,
       data: {
-        oldColorIndex: oldColorIndex,
+        oldColor: oldColor,
         newColor: newColor
       }
     });

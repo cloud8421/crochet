@@ -1,4 +1,4 @@
-jest.dontMock('../App.js');
+jest.autoMockOff();
 
 import React from 'react/addons';
 const {TestUtils} = React.addons;

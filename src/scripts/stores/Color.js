@@ -9,7 +9,8 @@ let _addColor = function(color) {
   colors = colors.push(color);
 }
 
-let _replaceColor = function(oldColorIndex, newColor) {
+let _replaceColor = function(oldColor, newColor) {
+  let oldColorIndex = colors.indexOf(oldColor);
   colors = colors.update(oldColorIndex, function(_old) {
     return newColor;
   });
@@ -36,7 +37,7 @@ Color.dispatchToken = AppDispatcher.register(function(payload) {
       Color.emitChange();
       break;
     case ColorActionTypes.REPLACE_COLOR:
-      _replaceColor(action.data.oldColorIndex, action.data.newColor);
+      _replaceColor(action.data.oldColor, action.data.newColor);
       Color.emitChange();
       break;
     case ColorActionTypes.CLEAR_COLORS:
