@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import ColorStore from '../stores/Color';
 import LayoutStore from '../stores/Layout';
-import Square from './Square';
+import Square from './grid/Square';
 
 let getState = function() {
   return {
