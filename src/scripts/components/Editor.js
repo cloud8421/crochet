@@ -2,12 +2,21 @@ import React from 'react';
 import Colors from './editor/Colors';
 import LayoutActions from '../actions/LayoutActions';
 import ColorStore from '../stores/Color';
+import LayoutStore from '../stores/Layout';
+
+getState = function() {
+  return {
+    width: LayoutStore.getWidth()
+  }
+}
 
 const Editor = React.createClass({
-  getInitialState() {
-    return {
-      width: 8
-    }
+  getInitialState: getState,
+  componentDidMount() {
+    LayoutStore.addChangeListener(this._onChange);
+  },
+  _onChange() {
+    this.setState(getState());
   },
   render (){
     return (
@@ -22,7 +31,7 @@ const Editor = React.createClass({
     );
   },
   handleWidthChange: function(event) {
-    this.setState({width: event.target.value});
+    LayoutActions.setWidth(event.target.value);
   },
   generateLayout() {
     let colorsCount = ColorStore.getColors().size;

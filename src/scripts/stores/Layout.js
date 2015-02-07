@@ -4,7 +4,10 @@ import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
 
+const DEFAULT_WIDTH = 4;
+
 let layout = new Immutable.List([]);
+let width = DEFAULT_WIDTH;
 
 _clearLayout = function() {
   layout = layout.clear();
@@ -19,9 +22,16 @@ _generateLayout = function(squaresCount, colorsCount) {
   })
 }
 
+_setWidth = function(newWidth) {
+  width = newWidth;
+}
+
 class _Layout extends BaseStore {
   getLayout() {
     return layout;
+  }
+  getWidth() {
+    return width;
   }
 }
 
@@ -40,6 +50,9 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
       _clearLayout();
       Layout.emitChange();
       break;
+    case LayoutActionTypes.SET_WIDTH:
+      _setWidth(action.width);
+      Layout.emitChange();
     default:
   }
 

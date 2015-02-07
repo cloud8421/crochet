@@ -16,6 +16,12 @@ const Actions = {
     AppDispatcher.handleViewAction({
       type: LayoutActionTypes.CLEAR_LAYOUT
     });
+  },
+  setWidth: function(newWidth) {
+    AppDispatcher.handleViewAction({
+      type: LayoutActionTypes.SET_WIDTH,
+      width: newWidth
+    });
   }
 }
 
