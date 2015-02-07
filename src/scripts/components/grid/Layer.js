@@ -5,10 +5,6 @@ let toEm = function(i) {
   return `${i}em`;
 }
 
-let toPercent = function(i) {
-  return `${i}%`;
-}
-
 const Layer = React.createClass({
   mixins: [ImmutableRenderMixin],
   render() {
