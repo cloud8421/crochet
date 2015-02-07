@@ -7,7 +7,8 @@ import Square from './grid/Square';
 let getState = function() {
   return {
     colors: ColorStore.getColors(),
-    layout: LayoutStore.getLayout()
+    layout: LayoutStore.getLayout(),
+    width: LayoutStore.getWidth()
   }
 }
 
@@ -27,9 +28,9 @@ const Grid = React.createClass({
     this.setState(getState());
   },
   render (){
-    let length = this.state.layout.size;
+    let totalWidth = this.state.width * this.state.colors.size;
     let style = {
-      width: `${length}em`
+      width: `${totalWidth}em`
     }
     let squares = this.state.layout.toArray().map(combination => {
       let colors = combine(combination, this.state.colors);
