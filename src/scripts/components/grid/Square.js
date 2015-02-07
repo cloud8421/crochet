@@ -27,7 +27,7 @@ const Square = React.createClass({
 
     return (
       <div className="square" style={style}>
-        {layers}
+        {layers.toArray()}
       </div>
     )
   }
