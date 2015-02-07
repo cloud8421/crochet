@@ -5,7 +5,6 @@ import ColorActions from '../../actions/ColorActions';
 let getInitialState = function() {
   return {
     editing: false
-    // color: this.props.color
   }
 }
 
