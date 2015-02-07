@@ -7,6 +7,8 @@
 .grid {
   @include outer-container;
   margin-top: 1em;
+  @include display(flex);
+  flex-wrap: wrap;
 }
 
 .colors-container {
