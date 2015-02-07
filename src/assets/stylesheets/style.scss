@@ -2,14 +2,15 @@
 @import './base/base';
 @import 'neat/neat';
 @import 'colorpicker';
-
-body {
-  background-color: #eee;
-}
+@import 'editor';
 
 .grid {
   display: flex;
   flex-wrap: wrap;
+}
+
+.colors-container {
+  @include outer-container;
 }
 
 .colors li {

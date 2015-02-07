@@ -21,9 +21,9 @@ const Color = React.createClass({
     }
 
     return (
-      <li>
+      <li className="texture">
         {palette}
-        <span className="color-preview" style={style} onClick={this.toggleEditing}></span>
+        <span className="texture-normal color-preview" style={style} onClick={this.toggleEditing}></span>
       </li>
     )
   },

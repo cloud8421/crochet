@@ -11,12 +11,14 @@ const Editor = React.createClass({
   },
   render (){
     return (
-      <div>
-        <button onClick={this.generateLayout}>Generate layout</button>
-        <label htmlFor="width">Width</label>
-        <input type="text" id="width" value={this.state.width} onChange={this.handleWidthChange} />
+      <section className="editor">
+        <div className="layout-controls">
+          <label htmlFor="width">Width</label>
+          <input type="number" id="width" value={this.state.width} onChange={this.handleWidthChange} />
+          <button id="generate" onClick={this.generateLayout}>Generate layout</button>
+        </div>
         <Colors />
-      </div>
+      </section>
     );
   },
   handleWidthChange: function(event) {

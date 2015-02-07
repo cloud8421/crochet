@@ -26,12 +26,14 @@ const Colors = React.createClass({
     });
 
     return (
-      <ul className='colors'>
-        {colors}
-        <li className="add-new">
-          <button onClick={this.addNewColor}>Add a new color</button>
-        </li>
-      </ul>
+      <section className="colors-container">
+        <ul className='colors'>
+          {colors}
+          <li className="add-new">
+            <button onClick={this.addNewColor}>Add a new color</button>
+          </li>
+        </ul>
+      </section>
     )
   }
 });
