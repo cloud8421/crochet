@@ -5,8 +5,8 @@
 @import 'editor';
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
+  @include outer-container;
+  margin-top: 1em;
 }
 
 .colors-container {
