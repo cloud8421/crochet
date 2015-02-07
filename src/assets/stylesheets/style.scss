@@ -9,6 +9,19 @@ body {
   flex-wrap: wrap;
 }
 
+.colors li {
+  list-style-type: none;
+  display: inline-block;
+  position: relative;
+
+  .colorpicker {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 2;
+  }
+}
+
 .square {
   display: inline-block;
   position: relative;

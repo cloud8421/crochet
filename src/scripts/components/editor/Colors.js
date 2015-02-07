@@ -22,7 +22,7 @@ const Colors = React.createClass({
     });
 
     return (
-      <ul>{colors}</ul>
+      <ul className='colors'>{colors}</ul>
     )
   }
 });
