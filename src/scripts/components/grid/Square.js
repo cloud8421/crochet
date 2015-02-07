@@ -1,22 +1,17 @@
 import React from 'react/addons';
 import Layer from './Layer';
-import Udon from 'udon';
-
-const PureRenderMixin = React.addons.PureRenderMixin;
-
-let range = function(i){
-  return i?range(i-1).concat(i):[]
-};
+import Immutable from 'immutable';
+import ImmutableRenderMixin from 'react-immutable-render-mixin';
 
 let buildLayers = function(colors) {
-  let ids = range(colors.length);
-  return Udon.zip(colors, ids);
+  let ids = Immutable.Range(1, colors.size + 1);
+  return colors.zip(ids);
 }
 
 const Square = React.createClass({
-  mixins: [PureRenderMixin],
+  mixins: [ImmutableRenderMixin],
   render (){
-    let length = this.props.colors.length;
+    let length = this.props.colors.size;
     let colorsWithIndex = buildLayers(this.props.colors);
     let style = {
       width: `${length}em`,

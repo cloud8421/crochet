@@ -33,7 +33,7 @@ const Grid = React.createClass({
     }
     let squares = this.state.layout.toArray().map(combination => {
       let colors = combine(combination, this.state.colors);
-      return <Square colors={colors.toArray()} />
+      return <Square colors={colors} />
     });
 
     return (

@@ -1,6 +1,5 @@
 import React from 'react';
-
-const PureRenderMixin = React.addons.PureRenderMixin;
+import ImmutableRenderMixin from 'react-immutable-render-mixin';
 
 let toEm = function(i) {
   return `${i}em`;
@@ -11,7 +10,7 @@ let toPercent = function(i) {
 }
 
 const Layer = React.createClass({
-  mixins: [PureRenderMixin],
+  mixins: [ImmutableRenderMixin],
   render() {
     let style = {
       backgroundColor: this.props.color,
