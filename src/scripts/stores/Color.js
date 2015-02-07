@@ -3,7 +3,11 @@ import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import ColorActionTypes from "../constants/ColorConstants";
 
-let colors = new Immutable.List([]);
+let colors = new Immutable.List([
+  '#FFE11A',
+  '#FD7400',
+  '#121212'
+]);
 
 let _addColor = function(color) {
   if (!colors.contains(color)) {

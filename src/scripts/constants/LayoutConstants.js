@@ -1,5 +1,5 @@
 const Types = {
-  GENERATE_LAYOUT: 'add-color',
+  GENERATE_LAYOUT: 'generate-layout',
   CLEAR_LAYOUT: 'clear-layout'
 }
 

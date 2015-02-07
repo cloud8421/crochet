@@ -32,6 +32,7 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
 
   switch (action.type) {
     case LayoutActionTypes.GENERATE_LAYOUT:
+      _clearLayout();
       _generateLayout(action.data.squaresCount, action.data.colorsCount);
       Layout.emitChange();
       break;
