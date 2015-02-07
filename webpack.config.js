@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var bourbon = require('node-bourbon').includePaths;
 
 module.exports = {
   devtool: "eval",
@@ -30,7 +31,7 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: "style!css!sass?outputStyle=expanded"
+        loader: "style!css!sass?outputStyle=expanded&includePaths[]=" + bourbon
       },
 
       {
