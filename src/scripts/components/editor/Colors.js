@@ -28,7 +28,7 @@ const Colors = React.createClass({
   },
   render() {
     let colors = this.state.colors.map(function(color) {
-      return <ColorComponent color={color} />
+      return <ColorComponent color={color} key={color} />
     });
 
     return (
