@@ -3,13 +3,9 @@ import LayoutActionTypes from "../constants/LayoutConstants";
 import LayoutStore from "../stores/Layout";
 
 const Actions = {
-  generateLayout: function(squaresCount, colorsCount) {
+  generateLayout: function() {
     AppDispatcher.handleViewAction({
-      type: LayoutActionTypes.GENERATE_LAYOUT,
-      data: {
-        squaresCount: squaresCount,
-        colorsCount: colorsCount
-      }
+      type: LayoutActionTypes.GENERATE_LAYOUT
     });
   },
   clearLayout: function() {

@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import _ from 'lodash';
 import BaseStore from "./_base";
+import ColorStore from "./Color";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
 
@@ -13,7 +14,9 @@ _clearLayout = function() {
   layout = layout.clear();
 }
 
-_generateLayout = function(squaresCount, colorsCount) {
+_generateLayout = function() {
+  let squaresCount = width * width;
+  let colorsCount = ColorStore.getColors().size;
   let ColorsRange = Immutable.Range(0, colorsCount);
 
   _.times(squaresCount, function() {
@@ -43,7 +46,7 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
   switch (action.type) {
     case LayoutActionTypes.GENERATE_LAYOUT:
       _clearLayout();
-      _generateLayout(action.data.squaresCount, action.data.colorsCount);
+      _generateLayout();
       Layout.emitChange();
       break;
     case LayoutActionTypes.CLEAR_LAYOUT:

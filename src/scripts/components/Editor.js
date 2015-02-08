@@ -34,9 +34,7 @@ const Editor = React.createClass({
     LayoutActions.setWidth(event.target.value);
   },
   generateLayout() {
-    let colorsCount = ColorStore.getColors().size;
-    let squaresCount = this.state.width * this.state.width;
-    LayoutActions.generateLayout(squaresCount, colorsCount);
+    LayoutActions.generateLayout();
   }
 });
 

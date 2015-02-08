@@ -1,6 +1,7 @@
 import React from 'react';
 import ColorStore from '../../stores/Color';
 import ColorActions from '../../actions/ColorActions';
+import LayoutActions from '../../actions/LayoutActions';
 import ColorComponent from './Color';
 
 let getState = function() {
@@ -19,6 +20,7 @@ const Colors = React.createClass({
   },
   addNewColor() {
     ColorActions.addColor('#ABABAB');
+    LayoutActions.generateLayout();
   },
   render() {
     let colors = this.state.colors.map(function(color) {

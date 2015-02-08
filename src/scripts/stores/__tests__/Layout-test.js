@@ -1,6 +1,7 @@
 jest.autoMockOff();
 
 import LayoutStore from '../Layout';
+import ColorActions from '../../actions/ColorActions';
 import LayoutActions from '../../actions/LayoutActions';
 
 describe('Layout store', function() {
@@ -14,7 +15,12 @@ describe('Layout store', function() {
 
   describe('generate a layout', function() {
     beforeEach(function() {
-      LayoutActions.generateLayout(9, 3);
+      ColorActions.clearColors();
+      ColorActions.addColor('#ffffff');
+      ColorActions.addColor('#cccccc');
+      ColorActions.addColor('#121212');
+      LayoutActions.setWidth(3);
+      LayoutActions.generateLayout();
     });
 
     it('can generate a layout with 9 squares', function() {
