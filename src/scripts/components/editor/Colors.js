@@ -4,6 +4,10 @@ import ColorActions from '../../actions/ColorActions';
 import LayoutActions from '../../actions/LayoutActions';
 import ColorComponent from './Color';
 
+let getRandomColor = function() {
+  return '#'+Math.floor(Math.random()*16777215).toString(16);
+}
+
 let getState = function() {
   return {
     colors: ColorStore.getColors().toArray()
@@ -19,7 +23,7 @@ const Colors = React.createClass({
     this.setState(getState());
   },
   addNewColor() {
-    ColorActions.addColor('#ABABAB');
+    ColorActions.addColor(getRandomColor());
     LayoutActions.generateLayout();
   },
   render() {
