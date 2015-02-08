@@ -32,14 +32,14 @@ const Grid = React.createClass({
     let style = {
       width: `${totalWidth}em`
     }
-    let squares = this.state.layout.toArray().map(combination => {
+    let squares = this.state.layout.map(combination => {
       let colors = combine(combination, this.state.colors);
       return <Square colors={colors} />
     });
 
     return (
       <div className="grid" style={style}>
-        {squares}
+        {squares.toArray()}
       </div>
     );
   }
