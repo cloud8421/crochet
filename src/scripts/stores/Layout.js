@@ -1,7 +1,6 @@
 import Immutable from 'immutable';
 import _ from 'lodash';
 import BaseStore from "./_base";
-import LayoutHistory from "./LayoutHistory";
 import ColorStore from "./Color";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
@@ -13,11 +12,13 @@ let layout = new Immutable.List([]);
 let width = DEFAULT_WIDTH;
 let height = DEFAULT_HEIGHT;
 
-_clearLayout = function() {
+let _clearLayout = function() {
   layout = layout.clear();
 }
 
-_generateLayout = function() {
+let _generateLayout = function() {
+  _clearLayout();
+
   let squaresCount = width * height;
   let colorsCount = ColorStore.getColors().size;
   let ColorsRange = Immutable.Range(0, colorsCount);
@@ -26,19 +27,13 @@ _generateLayout = function() {
     let randomizedCombination = _.shuffle(ColorsRange.toArray());
     layout = layout.push(Immutable.List(randomizedCombination));
   })
-
-  LayoutHistory.addLayout({
-    layout: layout,
-    width: width,
-    height: height
-  })
 }
 
-_setWidth = function(newWidth) {
+let _setWidth = function(newWidth) {
   width = newWidth;
 }
 
-_setHeight = function(newHeight) {
+let _setHeight = function(newHeight) {
   height = newHeight;
 }
 
@@ -61,7 +56,6 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
 
   switch (action.type) {
     case LayoutActionTypes.GENERATE_LAYOUT:
-      _clearLayout();
       _generateLayout();
       Layout.emitChange();
       break;
@@ -71,13 +65,11 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
       break;
     case LayoutActionTypes.SET_WIDTH:
       _setWidth(action.width);
-      _clearLayout();
       _generateLayout();
       Layout.emitChange();
       break;
     case LayoutActionTypes.SET_HEIGHT:
       _setHeight(action.height);
-      _clearLayout();
       _generateLayout();
       Layout.emitChange();
       break;
