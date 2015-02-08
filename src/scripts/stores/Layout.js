@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import _ from 'lodash';
 import BaseStore from "./_base";
+import LayoutHistory from "./LayoutHistory";
 import ColorStore from "./Color";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
@@ -24,6 +25,12 @@ _generateLayout = function() {
   _.times(squaresCount, function() {
     let randomizedCombination = _.shuffle(ColorsRange.toArray());
     layout = layout.push(Immutable.List(randomizedCombination));
+  })
+
+  LayoutHistory.addLayout({
+    layout: layout,
+    width: width,
+    height: height
   })
 }
 
