@@ -6,7 +6,8 @@ import LayoutStore from '../stores/Layout';
 
 getState = function() {
   return {
-    width: LayoutStore.getWidth()
+    width: LayoutStore.getWidth(),
+    height: LayoutStore.getHeight()
   }
 }
 
@@ -22,8 +23,14 @@ const Editor = React.createClass({
     return (
       <section className="editor">
         <div className="layout-controls">
-          <label htmlFor="width">Width</label>
-          <input type="number" id="width" value={this.state.width} onChange={this.handleWidthChange} />
+          <div className="width-control">
+            <label htmlFor="width">Width</label>
+            <input type="number" id="width" value={this.state.width} onChange={this.handleWidthChange} />
+          </div>
+          <div className="height-control">
+            <label htmlFor="height">Height</label>
+            <input type="number" id="height" value={this.state.height} onChange={this.handleHeightChange} />
+          </div>
           <button id="generate" onClick={this.generateLayout}>Generate layout</button>
         </div>
         <Colors />
@@ -32,6 +39,9 @@ const Editor = React.createClass({
   },
   handleWidthChange: function(event) {
     LayoutActions.setWidth(event.target.value);
+  },
+  handleHeightChange: function(event) {
+    LayoutActions.setHeight(event.target.value);
   },
   generateLayout() {
     LayoutActions.generateLayout();

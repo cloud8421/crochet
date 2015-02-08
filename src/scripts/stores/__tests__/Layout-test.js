@@ -20,6 +20,7 @@ describe('Layout store', function() {
       ColorActions.addColor('#cccccc');
       ColorActions.addColor('#121212');
       LayoutActions.setWidth(3);
+      LayoutActions.setHeight(3);
       LayoutActions.generateLayout();
     });
 

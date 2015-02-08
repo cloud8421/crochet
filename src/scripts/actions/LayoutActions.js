@@ -18,6 +18,12 @@ const Actions = {
       type: LayoutActionTypes.SET_WIDTH,
       width: newWidth
     });
+  },
+  setHeight: function(newHeight) {
+    AppDispatcher.handleViewAction({
+      type: LayoutActionTypes.SET_HEIGHT,
+      height: newHeight
+    });
   }
 }
 

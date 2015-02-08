@@ -2,8 +2,11 @@
   @include outer-container;
 }
 
-#width {
+.width-control, .height-control {
   @include span-columns(2);
+  label, input {
+    @include span-columns(6);
+  }
 }
 
 #generate {

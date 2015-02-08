@@ -6,16 +6,18 @@ import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
 
 const DEFAULT_WIDTH = 4;
+const DEFAULT_HEIGHT = 4;
 
 let layout = new Immutable.List([]);
 let width = DEFAULT_WIDTH;
+let height = DEFAULT_HEIGHT;
 
 _clearLayout = function() {
   layout = layout.clear();
 }
 
 _generateLayout = function() {
-  let squaresCount = width * width;
+  let squaresCount = width * height;
   let colorsCount = ColorStore.getColors().size;
   let ColorsRange = Immutable.Range(0, colorsCount);
 
@@ -29,12 +31,19 @@ _setWidth = function(newWidth) {
   width = newWidth;
 }
 
+_setHeight = function(newHeight) {
+  height = newHeight;
+}
+
 class _Layout extends BaseStore {
   getLayout() {
     return layout;
   }
   getWidth() {
     return width;
+  }
+  getHeight() {
+    return height;
   }
 }
 
@@ -55,7 +64,16 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
       break;
     case LayoutActionTypes.SET_WIDTH:
       _setWidth(action.width);
+      _clearLayout();
+      _generateLayout();
       Layout.emitChange();
+      break;
+    case LayoutActionTypes.SET_HEIGHT:
+      _setHeight(action.height);
+      _clearLayout();
+      _generateLayout();
+      Layout.emitChange();
+      break;
     default:
   }
 
