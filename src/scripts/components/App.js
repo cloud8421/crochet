@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from './Navigation';
 import Grid from './Grid';
 import Editor from './Editor';
 import History from './History';
@@ -6,14 +7,16 @@ import History from './History';
 const App = React.createClass({
   render (){
     return (
-      <section className="app">
-        <h1>Crochet</h1>
-        <section className="workspace">
-          <Editor initialColor="#007E90"/>
-          <Grid />
+      <div id="app">
+        <Navigation />
+        <section className="container">
+          <section className="workspace">
+            <Editor initialColor="#007E90"/>
+            <Grid />
+          </section>
+          <History />
         </section>
-        <History />
-      </section>
+      </div>
     );
   }
 });
