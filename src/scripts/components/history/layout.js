@@ -1,5 +1,6 @@
 import React from 'react';
 import ImmutableRenderMixin from 'react-immutable-render-mixin';
+import LayoutActions from '../../actions/LayoutActions';
 
 const Layout = React.createClass({
   mixins: [ImmutableRenderMixin],
@@ -7,8 +8,14 @@ const Layout = React.createClass({
     let colorsCount = this.props.layout.colors.size;
 
     return (
-      <li>{colorsCount} colors</li>
+      <li>
+        <span>{colorsCount} colors</span>
+        <button onClick={this.restoreLayout}>Restore</button>
+      </li>
     )
+  },
+  restoreLayout() {
+    LayoutActions.restoreLayout(this.props.layout);
   }
 });
 

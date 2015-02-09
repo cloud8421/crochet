@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import ColorActionTypes from "../constants/ColorConstants";
+import LayoutActionTypes from "../constants/LayoutConstants";
 
 let colors = new Immutable.List([
   '#FFE11A',
@@ -26,6 +27,10 @@ let _clearColors = function() {
   colors = colors.clear();
 }
 
+let _resetColors = function(newColors) {
+  colors = newColors;
+}
+
 class _Color extends BaseStore {
   getColors() {
     return colors;
@@ -48,6 +53,10 @@ Color.dispatchToken = AppDispatcher.register(function(payload) {
       break;
     case ColorActionTypes.CLEAR_COLORS:
       _clearColors();
+      Color.emitChange();
+      break;
+    case LayoutActionTypes.RESTORE_LAYOUT:
+      _resetColors(action.layout.colors);
       Color.emitChange();
       break;
     default:

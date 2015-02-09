@@ -13,6 +13,12 @@ const Actions = {
       type: LayoutActionTypes.CLEAR_LAYOUT
     });
   },
+  restoreLayout: function(layout) {
+    AppDispatcher.handleViewAction({
+      type: LayoutActionTypes.RESTORE_LAYOUT,
+      layout: layout
+    });
+  },
   setWidth: function(newWidth) {
     AppDispatcher.handleViewAction({
       type: LayoutActionTypes.SET_WIDTH,

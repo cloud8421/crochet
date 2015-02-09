@@ -37,6 +37,10 @@ let _setHeight = function(newHeight) {
   height = newHeight;
 }
 
+let _setLayout = function(newLayout) {
+  layout = newLayout;
+}
+
 class _Layout extends BaseStore {
   getLayout() {
     return layout;
@@ -71,6 +75,12 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
     case LayoutActionTypes.SET_HEIGHT:
       _setHeight(action.height);
       _generateLayout();
+      Layout.emitChange();
+      break;
+    case LayoutActionTypes.RESTORE_LAYOUT:
+      _setHeight(action.layout.height);
+      _setWidth(action.layout.width);
+      _setLayout(action.layout.layout);
       Layout.emitChange();
       break;
     default:
