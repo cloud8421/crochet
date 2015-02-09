@@ -52,7 +52,7 @@ class _Layout extends BaseStore {
 const Layout = new _Layout();
 
 Layout.dispatchToken = AppDispatcher.register(function(payload) {
-  var action = payload.action;
+  let action = payload.action;
 
   switch (action.type) {
     case LayoutActionTypes.GENERATE_LAYOUT:

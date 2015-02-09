@@ -11,8 +11,8 @@ let getInitialState = function() {
 const Color = React.createClass({
   getInitialState,
   render() {
-    var palette;
-    var style = {
+    let palette;
+    let style = {
       backgroundColor: this.props.color
     };
 

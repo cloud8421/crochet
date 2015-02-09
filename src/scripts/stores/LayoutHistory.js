@@ -34,7 +34,7 @@ class _LayoutHistory extends BaseStore {
 const LayoutHistory = new _LayoutHistory();
 
 LayoutHistory.dispatchToken = AppDispatcher.register(function(payload) {
-  var action = payload.action;
+  let action = payload.action;
 
   switch (action.type) {
     case LayoutActionTypes.GENERATE_LAYOUT:

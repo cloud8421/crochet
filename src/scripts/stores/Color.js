@@ -35,7 +35,7 @@ class _Color extends BaseStore {
 const Color = new _Color();
 
 Color.dispatchToken = AppDispatcher.register(function(payload) {
-  var action = payload.action;
+  let action = payload.action;
 
   switch (action.type) {
     case ColorActionTypes.ADD_COLOR:
