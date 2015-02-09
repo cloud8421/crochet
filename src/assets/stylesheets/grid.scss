@@ -14,6 +14,12 @@
   margin-bottom: 1em;
 }
 
+.color-preview {
+  width: 2.5em;
+  height: 2.5em;
+  display: block;
+}
+
 .colors li {
   list-style-type: none;
   display: inline-block;
@@ -23,12 +29,6 @@
 
   &.add-new {
     margin-left: 0.2em;
-  }
-
-  .color-preview {
-    width: 2.5em;
-    height: 2.5em;
-    display: block;
   }
 
   .colorpicker {
