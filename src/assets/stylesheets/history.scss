@@ -3,6 +3,11 @@
   @include omega();
   margin-top: 1em;
 
+  .color-preview {
+    width: 1em;
+    height: 1em;
+  }
+
   li button {
     font-size: 0.7em;
   }
