@@ -17,14 +17,18 @@ const Layout = React.createClass({
     });
 
     return (
-      <li>
+      <li className="version">
         <section className="meta">
-          <strong>{this.props.layout.width}x{this.props.layout.height}</strong>
+          <span className="size">
+            {this.props.layout.width}x{this.props.layout.height}
+          </span>
           <ul className="colors">
             {colors.toArray()}
           </ul>
         </section>
-        <button onClick={this.restoreLayout}>Restore</button>
+        <nav className="toolbar">
+          <button onClick={this.restoreLayout}>Restore</button>
+        </nav>
       </li>
     )
   },

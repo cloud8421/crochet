@@ -1,14 +1,24 @@
+@import 'mixins/badge';
+
 .history {
   @include span-columns(4);
   @include omega();
   margin-top: 1em;
 
-  li .meta {
-    @include display(flex);
-    align-items: flex-start;
+  .version {
+    @include clearfix();
+    border-top: 1px solid #ddd;
+    padding: 0.5em 0;
+
+    .meta {
+      @include clearfix();
+      @include display(flex);
+      align-items: flex-start;
+    }
   }
 
-  strong {
+  .size {
+    @include badge($notice-color);
     margin-right: 0.5em;
   }
 
@@ -18,7 +28,11 @@
     height: 1em;
   }
 
-  li button {
-    font-size: 0.7em;
+  .toolbar {
+    margin-bottom: 0.2em;
+
+    button {
+      font-size: 0.7em;
+    }
   }
 }
