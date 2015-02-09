@@ -1,6 +1,7 @@
 import React from 'react';
 import ColorPicker from 'react-simple-colorpicker';
 import ColorActions from '../../actions/ColorActions';
+import ColorPreview from '../shared/ColorPreview';
 
 let getInitialState = function() {
   return {
@@ -12,18 +13,14 @@ const Color = React.createClass({
   getInitialState,
   render() {
     let palette;
-    let style = {
-      backgroundColor: this.props.color
-    };
-
     if (this.state.editing) {
       palette = <ColorPicker color={this.props.color} onChange={this.handleChange} />
     }
 
     return (
-      <li className="texture">
+      <li>
         {palette}
-        <span className="texture-normal color-preview" style={style} onClick={this.toggleEditing}></span>
+        <ColorPreview color={this.props.color} onClick={this.toggleEditing} />
       </li>
     )
   },
