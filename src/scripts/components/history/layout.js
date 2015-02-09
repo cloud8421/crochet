@@ -18,10 +18,12 @@ const Layout = React.createClass({
 
     return (
       <li>
-        <strong>{this.props.layout.width}x{this.props.layout.height}</strong>
-        <ul className="colors">
-          {colors.toArray()}
-        </ul>
+        <section className="meta">
+          <strong>{this.props.layout.width}x{this.props.layout.height}</strong>
+          <ul className="colors">
+            {colors.toArray()}
+          </ul>
+        </section>
         <button onClick={this.restoreLayout}>Restore</button>
       </li>
     )

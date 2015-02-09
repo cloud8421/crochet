@@ -3,7 +3,17 @@
   @include omega();
   margin-top: 1em;
 
+  li .meta {
+    @include display(flex);
+    align-items: flex-start;
+  }
+
+  strong {
+    margin-right: 0.5em;
+  }
+
   .color-preview {
+    display: inline-block;
     width: 1em;
     height: 1em;
   }
