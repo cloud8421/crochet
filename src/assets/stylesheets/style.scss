@@ -3,6 +3,7 @@
 @import 'neat/neat';
 @import 'colorpicker';
 @import 'editor';
+@import 'history';
 
 .grid {
   @include outer-container;

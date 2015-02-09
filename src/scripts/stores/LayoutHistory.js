@@ -15,7 +15,7 @@ const LayoutRecord = Immutable.Record({
 let layouts = Immutable.List([]);
 
 _saveLayout = function() {
-  newLayout = new LayoutRecord({
+  let newLayout = new LayoutRecord({
     layout: LayoutStore.getLayout(),
     width: LayoutStore.getWidth(),
     height: LayoutStore.getHeight(),

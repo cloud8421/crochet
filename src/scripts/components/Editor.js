@@ -1,5 +1,6 @@
 import React from 'react';
 import Colors from './editor/Colors';
+import History from './History';
 import LayoutActions from '../actions/LayoutActions';
 import ColorStore from '../stores/Color';
 import LayoutStore from '../stores/Layout';
@@ -34,6 +35,7 @@ const Editor = React.createClass({
           <button id="generate" onClick={this.generateLayout}>Generate layout</button>
         </div>
         <Colors />
+        <History />
       </section>
     );
   },
