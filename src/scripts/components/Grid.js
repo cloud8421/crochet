@@ -38,9 +38,9 @@ const Grid = React.createClass({
     });
 
     return (
-      <div className="grid" style={style}>
+      <section className="grid" style={style}>
         {squares.toArray()}
-      </div>
+      </section>
     );
   }
 });

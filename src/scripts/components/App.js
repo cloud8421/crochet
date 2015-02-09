@@ -5,7 +5,7 @@ import Editor from './Editor';
 const App = React.createClass({
   render (){
     return (
-      <section className="main">
+      <section className="app">
         <h1>Crochet</h1>
         <Editor initialColor="#007E90"/>
         <Grid />
