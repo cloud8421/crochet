@@ -1,19 +1,23 @@
+.grid-container {
+  @include span-columns(12);
+  @include clearfix();
+}
+
 .grid {
-  @include outer-container;
-  margin-top: 1em;
   @include display(flex);
   flex-wrap: wrap;
 }
 
 .colors-container {
-  @include outer-container;
+  @include span-columns(12);
+  @include clearfix();
+  margin-bottom: 1em;
 }
 
 .colors li {
   list-style-type: none;
   display: inline-block;
   position: relative;
-  height: 2em;
   vertical-align: middle;
   text-align: center;
 

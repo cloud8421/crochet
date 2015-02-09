@@ -1,4 +1,9 @@
 .history {
-  @include outer-container;
+  @include span-columns(4);
+  @include omega();
   margin-top: 1em;
+
+  li button {
+    font-size: 0.7em;
+  }
 }

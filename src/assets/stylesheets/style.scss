@@ -9,3 +9,7 @@
 .app {
   @include outer-container;
 }
+
+.workspace {
+  @include span-columns(8);
+}

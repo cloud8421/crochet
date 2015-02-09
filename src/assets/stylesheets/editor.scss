@@ -1,4 +1,9 @@
-.editor, .layout-controls {
+.editor {
+  @include span-columns(12);
+  @include clearfix();
+}
+
+.layout-controls {
   @include outer-container;
 }
 

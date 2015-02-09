@@ -38,8 +38,10 @@ const Grid = React.createClass({
     });
 
     return (
-      <section className="grid" style={style}>
-        {squares.toArray()}
+      <section className="grid-container">
+        <div className="grid" style={style}>
+          {squares.toArray()}
+        </div>
       </section>
     );
   }
