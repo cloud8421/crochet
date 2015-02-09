@@ -4,50 +4,8 @@
 @import 'colorpicker';
 @import 'editor';
 @import 'history';
+@import 'grid';
 
-.grid {
+.main {
   @include outer-container;
-  margin-top: 1em;
-  @include display(flex);
-  flex-wrap: wrap;
-}
-
-.colors-container {
-  @include outer-container;
-}
-
-.colors li {
-  list-style-type: none;
-  display: inline-block;
-  position: relative;
-  height: 2em;
-  vertical-align: middle;
-  text-align: center;
-
-  &.add-new {
-    margin-left: 0.2em;
-  }
-
-  .color-preview {
-    width: 2.5em;
-    height: 2.5em;
-    display: block;
-  }
-
-  .colorpicker {
-    position: absolute;
-    top: 1em;
-    left: 1em;
-    z-index: 4;
-  }
-}
-
-.square {
-  display: inline-block;
-  position: relative;
-}
-
-.square div {
-  display: block;
-  position: absolute;
 }
