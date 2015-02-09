@@ -18,9 +18,9 @@ const Color = React.createClass({
     }
 
     return (
-      <li>
+      <li onClick={this.toggleEditing} >
         {palette}
-        <ColorPreview color={this.props.color} onClick={this.toggleEditing} />
+        <ColorPreview color={this.props.color} />
       </li>
     )
   },
