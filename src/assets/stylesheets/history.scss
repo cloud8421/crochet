@@ -3,7 +3,6 @@
 .history {
   @include span-columns(4);
   @include omega();
-  margin-top: 1em;
 
   header {
     h2 {
