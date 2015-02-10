@@ -5,10 +5,15 @@
 
 .layout-controls {
   @include outer-container;
+  @include display(flex);
+  align-items: baseline;
 }
 
 .width-control, .height-control {
   @include span-columns(2);
+  @include display(flex);
+  align-items: baseline;
+
   label, input {
     @include span-columns(6);
   }
