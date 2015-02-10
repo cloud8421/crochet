@@ -2,6 +2,8 @@ import React from 'react';
 import HistoryStore from '../stores/LayoutHistory';
 import Layout from './history/layout';
 
+const VISIBLE_VERSIONS = 5;
+
 let getState = function() {
   return {
     layouts: HistoryStore.getLayouts()
@@ -17,12 +19,17 @@ const HistoryComp = React.createClass({
     this.setState(getState());
   },
   render() {
-    let layouts = this.state.layouts.map(function(layout) {
-      return <Layout layout={layout} />
-    });
+    let layouts = this.state.layouts
+      .takeLast(VISIBLE_VERSIONS)
+      .map(function(layout) {
+        return <Layout layout={layout} />
+      });
     return (
       <section className="history">
-        <h2>All versions for this layout</h2>
+        <header>
+          <h2>Last {VISIBLE_VERSIONS} versions</h2>
+          <span className="count">{this.state.layouts.size} total</span>
+        </header>
         {layouts.size > 0 ? <ul>{layouts.toArray()}</ul> : <p>None yet!</p>}
       </section>
     )

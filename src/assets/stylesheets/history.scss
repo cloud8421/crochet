@@ -5,6 +5,18 @@
   @include omega();
   margin-top: 1em;
 
+  header {
+    h2 {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+
+    .count {
+      float: right;
+      @include badge($success-color);
+    }
+  }
+
   .version {
     @include clearfix();
     border-top: 1px solid #ddd;
