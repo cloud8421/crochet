@@ -9,6 +9,12 @@ const Actions = {
       color: newColor
     });
   },
+  editColor: function(color) {
+    AppDispatcher.handleViewAction({
+      type: ColorActionTypes.EDIT_COLOR,
+      color: color
+    });
+  },
   replaceColor: function(oldColor, newColor) {
     AppDispatcher.handleViewAction({
       type: ColorActionTypes.REPLACE_COLOR,

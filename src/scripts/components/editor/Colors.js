@@ -1,5 +1,6 @@
 import React from 'react';
 import ColorStore from '../../stores/Color';
+import WorkflowStore from '../../stores/Workflow';
 import ColorActions from '../../actions/ColorActions';
 import LayoutActions from '../../actions/LayoutActions';
 import ColorComponent from './Color';
@@ -10,7 +11,8 @@ let getRandomColor = function() {
 
 let getState = function() {
   return {
-    colors: ColorStore.getColors().toArray()
+    colorBeingEdited: WorkflowStore.getStatus().get('colorBeingEdited'),
+    colors: ColorStore.getColors()
   }
 }
 
@@ -18,6 +20,7 @@ const Colors = React.createClass({
   getInitialState: getState,
   componentDidMount() {
     ColorStore.addChangeListener(this._onChange);
+    WorkflowStore.addChangeListener(this._onChange);
   },
   _onChange() {
     this.setState(getState());
@@ -27,14 +30,15 @@ const Colors = React.createClass({
     LayoutActions.generateLayout();
   },
   render() {
-    let colors = this.state.colors.map(function(color) {
-      return <ColorComponent color={color} key={color} />
+    let colors = this.state.colors.map(color => {
+      let beingEdited = (this.state.colorBeingEdited === color);
+      return <ColorComponent color={color} key={color} beingEdited={beingEdited}/>
     });
 
     return (
       <section className="colors-container">
         <ul className='colors'>
-          {colors}
+          {colors.toArray()}
           <li className="add-new">
             <button onClick={this.addNewColor}>Add a new color</button>
           </li>
