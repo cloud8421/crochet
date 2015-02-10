@@ -22,7 +22,7 @@ const HistoryComp = React.createClass({
     });
     return (
       <section className="history">
-        <h1>All versions for this layout</h1>
+        <h2>All versions for this layout</h2>
         {layouts.size > 0 ? <ul>{layouts.toArray()}</ul> : <p>None yet!</p>}
       </section>
     )
