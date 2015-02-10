@@ -22,6 +22,7 @@ const Editor = React.createClass({
   render (){
     return (
       <section className="editor">
+        <h2>Dimensions</h2>
         <div className="layout-controls">
           <div className="width-control">
             <label htmlFor="width">Width</label>
@@ -33,6 +34,7 @@ const Editor = React.createClass({
           </div>
           <button id="generate" onClick={this.generateLayout}>Generate layout</button>
         </div>
+        <h2>Colors</h2>
         <Colors />
       </section>
     );

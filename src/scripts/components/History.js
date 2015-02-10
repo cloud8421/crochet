@@ -27,8 +27,8 @@ const HistoryComp = React.createClass({
     return (
       <section className="history">
         <header>
-          <h2>Last {VISIBLE_VERSIONS} versions</h2>
           <span className="count">{this.state.layouts.size} total</span>
+          <h2>Last {VISIBLE_VERSIONS} versions</h2>
         </header>
         {layouts.size > 0 ? <ul>{layouts.toArray()}</ul> : <p>None yet!</p>}
       </section>
