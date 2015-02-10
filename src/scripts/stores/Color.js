@@ -4,7 +4,13 @@ import AppDispatcher from "../dispatcher/AppDispatcher";
 import ColorActionTypes from "../constants/ColorConstants";
 import LayoutActionTypes from "../constants/LayoutConstants";
 
-let colors = new Immutable.List([]);
+let _generateRandomHex = function() {
+  return '#'+Math.floor(Math.random()*16777215).toString(16);
+}
+
+let colors = new Immutable.List([
+  _generateRandomHex()
+]);
 
 let _addColor = function(color) {
   if (!colors.contains(color)) {
@@ -35,6 +41,9 @@ let _resetColors = function(newColors) {
 class _Color extends BaseStore {
   getColors() {
     return colors;
+  }
+  generateRandomHex() {
+   return _generateRandomHex()
   }
 };
 
