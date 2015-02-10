@@ -19,6 +19,11 @@ let _replaceColor = function(oldColor, newColor) {
   });
 }
 
+let _removeColor = function(color) {
+  let colorIndex = colors.indexOf(color);
+  colors = colors.delete(colorIndex);
+}
+
 let _clearColors = function() {
   colors = colors.clear();
 }
@@ -45,6 +50,10 @@ Color.dispatchToken = AppDispatcher.register(function(payload) {
       break;
     case ColorActionTypes.REPLACE_COLOR:
       _replaceColor(action.data.oldColor, action.data.newColor);
+      Color.emitChange();
+      break;
+    case ColorActionTypes.REMOVE_COLOR:
+      _removeColor(action.color);
       Color.emitChange();
       break;
     case ColorActionTypes.CLEAR_COLORS:

@@ -15,6 +15,12 @@ const Actions = {
       color: color
     });
   },
+  removeColor: function(color) {
+    AppDispatcher.handleViewAction({
+      type: ColorActionTypes.REMOVE_COLOR,
+      color: color
+    });
+  },
   replaceColor: function(oldColor, newColor) {
     AppDispatcher.handleViewAction({
       type: ColorActionTypes.REPLACE_COLOR,
