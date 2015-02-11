@@ -20,6 +20,13 @@
     @include clearfix();
     border-bottom: 1px solid #ddd;
     padding: 0.5em 0;
+    cursor: pointer;
+    &:hover {
+      background-color: $controls-hover;
+    }
+    &.selected {
+      background-color: $controls-selected;
+    }
 
     .meta {
       @include clearfix();
@@ -29,7 +36,7 @@
   }
 
   .size {
-    @include badge($notice-color);
+    @include badge($alert-color);
     margin-right: 0.5em;
   }
 
@@ -37,13 +44,5 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-  }
-
-  .toolbar {
-    margin-bottom: 0.2em;
-
-    button {
-      font-size: 0.7em;
-    }
   }
 }

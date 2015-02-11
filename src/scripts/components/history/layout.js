@@ -17,7 +17,7 @@ const Layout = React.createClass({
     });
 
     return (
-      <li className="version">
+      <li className="version" onClick={this.restoreLayout}>
         <section className="meta">
           <span className="size">
             {this.props.layout.width}x{this.props.layout.height}
@@ -26,9 +26,6 @@ const Layout = React.createClass({
             {colors.toArray()}
           </ul>
         </section>
-        <nav className="toolbar">
-          <button onClick={this.restoreLayout}>Restore</button>
-        </nav>
       </li>
     )
   },
