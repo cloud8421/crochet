@@ -4,6 +4,7 @@ import LayoutStore from "./Layout";
 import ColorStore from "./Color";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
+import ColorActionTypes from "../constants/ColorConstants";
 
 const LayoutRecord = Immutable.Record({
   layout: Immutable.List([]),
@@ -46,6 +47,10 @@ LayoutHistory.dispatchToken = AppDispatcher.register(function(payload) {
       LayoutHistory.emitChange();
       break;
     case LayoutActionTypes.SET_HEIGHT:
+      _saveLayout();
+      LayoutHistory.emitChange();
+      break;
+    case ColorActionTypes.REPLACE_COLOR:
       _saveLayout();
       LayoutHistory.emitChange();
       break;

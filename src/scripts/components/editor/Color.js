@@ -27,7 +27,6 @@ const Color = React.createClass({
   handleChange(color) {
     ColorActions.editColor(color);
     ColorActions.replaceColor(this.props.color, color);
-    LayoutActions.generateLayout();
   },
   editColor() {
     ColorActions.editColor(this.props.color);
