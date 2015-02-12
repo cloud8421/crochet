@@ -15,17 +15,18 @@
     "react-simple-colorpicker": "^1.0.1"
   },
   "devDependencies": {
+    "6to5-jest": "*",
+    "6to5-loader": "*",
     "css-loader": "*",
     "file-loader": "*",
     "jest-cli": "*",
     "react-hot-loader": "^1.1.4",
     "react-tools": "^0.12.2",
+    "sass-loader": "*",
     "style-loader": "*",
-    "webpack-dev-server": "^1.7.0",
+    "url-loader": "^0.5.5",
     "webpack": "^1.4.14",
-    "6to5-loader": "*",
-    "6to5-jest": "*",
-    "sass-loader": "*"
+    "webpack-dev-server": "^1.7.0"
   },
   "scripts": {
     "dev": "webpack-dev-server --colors --content-base ./build",
