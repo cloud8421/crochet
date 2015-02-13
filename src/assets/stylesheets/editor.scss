@@ -10,17 +10,17 @@
 }
 
 .width-control, .height-control {
-  @include span-columns(2);
+  @include span-columns(3);
   @include display(flex);
   align-items: baseline;
 
   label, input {
-    @include span-columns(6);
+    @include span-columns(5);
   }
 }
 
 #generate {
-  @include span-columns(4);
+  @include span-columns(7);
 }
 
 .colors-container {
@@ -45,7 +45,7 @@
   text-align: center;
 
   &.add-new {
-    margin-left: 0.2em;
+    float: right;
   }
 
   .color-dialog {
