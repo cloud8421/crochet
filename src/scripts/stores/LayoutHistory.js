@@ -5,13 +5,7 @@ import ColorStore from "./Color";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
 import ColorActionTypes from "../constants/ColorConstants";
-
-const LayoutRecord = Immutable.Record({
-  layout: Immutable.List([]),
-  width: 0,
-  height: 0,
-  colors: Immutable.List([])
-});
+import LayoutRecord from "../records/layout";
 
 let layouts = Immutable.List([]);
 
