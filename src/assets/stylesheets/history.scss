@@ -16,6 +16,16 @@
     }
   }
 
+  footer {
+    li {
+      display: inline-block;
+    }
+    a {
+      display: block;
+      width: 1em;
+    }
+  }
+
   .version {
     @include clearfix();
     border-bottom: 1px solid #ddd;

@@ -1,5 +1,7 @@
 import React from 'react';
+import Paginator from '../lib/paginator';
 import HistoryStore from '../stores/LayoutHistory';
+import Pagination from './history/pagination';
 import Layout from './history/layout';
 
 const VISIBLE_VERSIONS = 5;
@@ -11,7 +13,12 @@ let getState = function() {
 }
 
 const HistoryComp = React.createClass({
-  getInitialState: getState,
+  getInitialState: function() {
+    return {
+      layouts: HistoryStore.getLayouts(),
+      page: 1
+    }
+  },
   componentDidMount() {
     HistoryStore.addChangeListener(this._onChange);
   },
@@ -19,11 +26,16 @@ const HistoryComp = React.createClass({
     this.setState(getState());
   },
   render() {
-    let layouts = this.state.layouts
-      .takeLast(VISIBLE_VERSIONS)
+    let paginated = Paginator.paginate(this.state.layouts, VISIBLE_VERSIONS);
+
+    let layouts = paginated
+      .get(this.state.page)
       .map(function(layout) {
         return <Layout layout={layout} />
       });
+
+    let pageNumbers = paginated.keySeq();
+
     return (
       <section className="history">
         <header>
@@ -31,6 +43,9 @@ const HistoryComp = React.createClass({
           <h2>Last {VISIBLE_VERSIONS} versions</h2>
         </header>
         {layouts.size > 0 ? <ul>{layouts.toArray()}</ul> : <p>None yet!</p>}
+        <footer>
+          <Pagination pageNumbers={pageNumbers} />
+        </footer>
       </section>
     )
   }
