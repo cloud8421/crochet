@@ -8,17 +8,13 @@ const VISIBLE_VERSIONS = 5;
 
 let getState = function() {
   return {
-    layouts: HistoryStore.getLayouts()
+    layouts: HistoryStore.getLayouts(),
+    pageNumber: HistoryStore.getPageNumber()
   }
 }
 
 const HistoryComp = React.createClass({
-  getInitialState: function() {
-    return {
-      layouts: HistoryStore.getLayouts(),
-      page: 1
-    }
-  },
+  getInitialState: getState,
   componentDidMount() {
     HistoryStore.addChangeListener(this._onChange);
   },
@@ -29,7 +25,7 @@ const HistoryComp = React.createClass({
     let paginated = Paginator.paginate(this.state.layouts, VISIBLE_VERSIONS);
 
     let layouts = paginated
-      .get(this.state.page)
+      .get(this.state.pageNumber)
       .map(function(layout) {
         return <Layout layout={layout} />
       });

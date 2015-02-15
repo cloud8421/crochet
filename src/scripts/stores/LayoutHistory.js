@@ -5,9 +5,11 @@ import ColorStore from "./Color";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
 import ColorActionTypes from "../constants/ColorConstants";
+import LayoutHistoryActionTypes from "../constants/LayoutHistoryConstants";
 import LayoutRecord from "../records/layout";
 
 let layouts = Immutable.List([]);
+let pageNumber = 1;
 
 _saveLayout = function() {
   let newLayout = new LayoutRecord({
@@ -20,9 +22,16 @@ _saveLayout = function() {
   layouts = layouts.push(newLayout);
 }
 
+_setPageNumber = function(newPageNumber) {
+  pageNumber = newPageNumber;
+}
+
 class _LayoutHistory extends BaseStore {
   getLayouts() {
     return layouts;
+  }
+  getPageNumber() {
+    return pageNumber;
   }
 }
 
@@ -46,6 +55,10 @@ LayoutHistory.dispatchToken = AppDispatcher.register(function(payload) {
       break;
     case ColorActionTypes.REPLACE_COLOR:
       _saveLayout();
+      LayoutHistory.emitChange();
+      break;
+    case LayoutHistoryActionTypes.SET_PAGE:
+      _setPageNumber(action.pageNumber);
       LayoutHistory.emitChange();
       break;
     default:
