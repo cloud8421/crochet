@@ -3,8 +3,6 @@ import HistoryStore from '../stores/LayoutHistory';
 import Pagination from './history/pagination';
 import Layout from './history/layout';
 
-const VISIBLE_VERSIONS = 5;
-
 let getState = function() {
   return {
     layouts: HistoryStore.getLayouts(),
@@ -32,11 +30,11 @@ const HistoryComp = React.createClass({
       <section className="history">
         <header>
           <span className="count">{this.state.layouts.size} total</span>
-          <h2>Last {VISIBLE_VERSIONS} versions</h2>
+          <h2>History</h2>
+          <Pagination pageNumbers={this.state.pageNumbers} current={this.state.pageNumber} />
         </header>
         {layouts.size > 0 ? <ul>{layouts.toArray()}</ul> : <p>None yet!</p>}
         <footer>
-          <Pagination pageNumbers={this.state.pageNumbers} current={this.state.pageNumber} />
         </footer>
       </section>
     )

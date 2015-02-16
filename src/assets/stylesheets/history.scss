@@ -17,14 +17,20 @@
   }
 
   .pagination {
+    text-align: center;
+    margin: 0.5em 0;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+
     li {
       display: inline-block;
     }
     a {
       display: block;
-      width: 1em;
+      padding: 0 0.6em;
+      cursor: pointer;
       &.active {
-        color: red;
+        background-color: $notice-color;
       }
     }
   }
