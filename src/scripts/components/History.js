@@ -37,6 +37,7 @@ const HistoryComp = React.createClass({
         <header>
           <span className="count">{this.state.layouts.size} total</span>
           <h2>Last {VISIBLE_VERSIONS} versions</h2>
+          <Pagination pageNumbers={pageNumbers} />
         </header>
         {layouts.size > 0 ? <ul>{layouts.toArray()}</ul> : <p>None yet!</p>}
         <footer>
