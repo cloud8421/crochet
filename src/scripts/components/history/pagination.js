@@ -12,6 +12,7 @@ const Pagination = React.createClass({
         <PaginationLink
           key={pn}
           number={pn}
+          selected={pn == this.props.current}
           onClick={this.openPage.bind(this, pn)} />
       )
     });

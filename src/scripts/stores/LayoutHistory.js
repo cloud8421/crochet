@@ -7,9 +7,13 @@ import LayoutActionTypes from "../constants/LayoutConstants";
 import ColorActionTypes from "../constants/ColorConstants";
 import LayoutHistoryActionTypes from "../constants/LayoutHistoryConstants";
 import LayoutRecord from "../records/layout";
+import Paginator from '../lib/paginator';
+
+const PAGE_SIZE = 5;
 
 let layouts = Immutable.List([]);
 let pageNumber = 1;
+let page = Immutable.List([]);
 
 _saveLayout = function() {
   let newLayout = new LayoutRecord({
@@ -20,18 +24,33 @@ _saveLayout = function() {
   });
 
   layouts = layouts.push(newLayout);
+  pageNumber = _pageNumbers().last();
 }
 
 _setPageNumber = function(newPageNumber) {
   pageNumber = newPageNumber;
 }
 
+_pageNumbers = function() {
+  return _paginated().keySeq();
+}
+
+_paginated = function() {
+  return Paginator.paginate(layouts, PAGE_SIZE);
+}
+
 class _LayoutHistory extends BaseStore {
   getLayouts() {
     return layouts;
   }
+  getPage() {
+    return _paginated().get(pageNumber);
+  }
   getPageNumber() {
     return pageNumber;
+  }
+  getPageNumbers() {
+    return _pageNumbers();
   }
 }
 

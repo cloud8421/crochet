@@ -2,7 +2,7 @@ import React from 'react';
 
 const PaginationLink = React.createClass({
   render() {
-    return <li><a onClick={this.props.onClick}>{this.props.number}</a></li>;
+    return <li><a className={this.props.selected ? 'active' : '' } onClick={this.props.onClick}>{this.props.number}</a></li>;
   }
 });
 

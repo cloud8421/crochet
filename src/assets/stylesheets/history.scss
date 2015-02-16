@@ -23,6 +23,9 @@
     a {
       display: block;
       width: 1em;
+      &.active {
+        color: red;
+      }
     }
   }
 
