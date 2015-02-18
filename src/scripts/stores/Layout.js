@@ -18,6 +18,24 @@ let _clearLayout = function() {
   layout = layout.clear();
 }
 
+let _weightedList = function() {
+  let colorsFrequency = layout
+                        .flatten()
+                        .countBy(x => x);
+  let total = colorsFrequency
+              .valueSeq()
+              .reduce((t, c) => t + c, 0);
+  return colorsFrequency.reduce((memo, count, color) => {
+           return memo.set(color, 100 - (count / total * 100))
+         }, new Immutable.OrderedMap())
+         .map((probability, color) => {
+           return Immutable.Repeat(color, Math.round(probability))
+         })
+         .valueSeq()
+         .flatten()
+         .toJSON()
+}
+
 let _generateLayout = function() {
   _clearLayout();
 
@@ -29,6 +47,8 @@ let _generateLayout = function() {
     let randomizedCombination = _.sample(ColorsRange.toArray(), numberOfLayers);
     layout = layout.push(Immutable.List(randomizedCombination));
   })
+
+  console.log(_weightedList());
 }
 
 let _setWidth = function(newWidth) {
