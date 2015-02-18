@@ -72,6 +72,10 @@ LayoutHistory.dispatchToken = AppDispatcher.register(function(payload) {
       _saveLayout();
       LayoutHistory.emitChange();
       break;
+    case LayoutActionTypes.SET_NUMBER_OF_LAYERS:
+      _saveLayout();
+      LayoutHistory.emitChange();
+      break;
     case ColorActionTypes.REPLACE_COLOR:
       _saveLayout();
       LayoutHistory.emitChange();

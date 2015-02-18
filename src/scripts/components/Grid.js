@@ -8,7 +8,8 @@ let getState = function() {
   return {
     colors: ColorStore.getColors(),
     layout: LayoutStore.getLayout(),
-    width: LayoutStore.getWidth()
+    width: LayoutStore.getWidth(),
+    numberOfLayers: LayoutStore.getNumberOfLayers()
   }
 }
 
@@ -28,7 +29,7 @@ const Grid = React.createClass({
     this.setState(getState());
   },
   render (){
-    let totalWidth = this.state.width * this.state.colors.size;
+    let totalWidth = this.state.width * this.state.numberOfLayers;
     let style = {
       width: `${totalWidth}em`
     }

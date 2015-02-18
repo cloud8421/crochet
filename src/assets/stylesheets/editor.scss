@@ -9,10 +9,10 @@
   align-items: baseline;
 }
 
-.width-control, .height-control {
+.width-control, .height-control, .number-of-layers-control {
   @include span-columns(3);
   @include display(flex);
-  align-items: baseline;
+  align-items: center;
 
   label, input {
     @include span-columns(5);
@@ -20,7 +20,7 @@
 }
 
 #generate {
-  @include span-columns(7);
+  @include span-columns(3);
 }
 
 .colors-container {

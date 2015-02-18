@@ -7,7 +7,8 @@ import LayoutStore from '../stores/Layout';
 getState = function() {
   return {
     width: LayoutStore.getWidth(),
-    height: LayoutStore.getHeight()
+    height: LayoutStore.getHeight(),
+    numberOfLayers: LayoutStore.getNumberOfLayers()
   }
 }
 
@@ -32,7 +33,11 @@ const Editor = React.createClass({
             <label htmlFor="height">Height</label>
             <input type="number" id="height" value={this.state.height} onChange={this.handleHeightChange} />
           </div>
-          <button id="generate" onClick={this.generateLayout}>Generate layout</button>
+          <div className="number-of-layers-control">
+            <label htmlFor="number-of-layers">Layers</label>
+            <input type="number" id="number-of-layers" value={this.state.numberOfLayers} onChange={this.handleNumberOfLayersChange} />
+          </div>
+          <button id="generate" onClick={this.generateLayout}>Generate</button>
         </div>
         <h2>Colors</h2>
         <Colors />
@@ -44,6 +49,9 @@ const Editor = React.createClass({
   },
   handleHeightChange: function(event) {
     LayoutActions.setHeight(event.target.value);
+  },
+  handleNumberOfLayersChange: function(event) {
+    LayoutActions.setNumberOfLayers(event.target.value);
   },
   generateLayout() {
     LayoutActions.generateLayout();

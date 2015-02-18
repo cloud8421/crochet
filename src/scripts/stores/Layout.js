@@ -7,10 +7,12 @@ import LayoutActionTypes from "../constants/LayoutConstants";
 
 const DEFAULT_WIDTH = 4;
 const DEFAULT_HEIGHT = 4;
+const DEFAULT_NUMBER_OF_LAYERS = 3;
 
 let layout = new Immutable.List([]);
 let width = DEFAULT_WIDTH;
 let height = DEFAULT_HEIGHT;
+let numberOfLayers = DEFAULT_NUMBER_OF_LAYERS;
 
 let _clearLayout = function() {
   layout = layout.clear();
@@ -24,7 +26,7 @@ let _generateLayout = function() {
   let ColorsRange = Immutable.Range(0, colorsCount);
 
   _.times(squaresCount, function() {
-    let randomizedCombination = _.shuffle(ColorsRange.toArray());
+    let randomizedCombination = _.sample(ColorsRange.toArray(), numberOfLayers);
     layout = layout.push(Immutable.List(randomizedCombination));
   })
 }
@@ -41,6 +43,10 @@ let _setLayout = function(newLayout) {
   layout = newLayout;
 }
 
+let _setNumberOfLayers = function(newNumberOfLayers) {
+  numberOfLayers = newNumberOfLayers;
+}
+
 class _Layout extends BaseStore {
   getLayout() {
     return layout;
@@ -50,6 +56,9 @@ class _Layout extends BaseStore {
   }
   getHeight() {
     return height;
+  }
+  getNumberOfLayers() {
+    return numberOfLayers;
   }
 }
 
@@ -74,6 +83,11 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
       break;
     case LayoutActionTypes.SET_HEIGHT:
       _setHeight(action.height);
+      _generateLayout();
+      Layout.emitChange();
+      break;
+    case LayoutActionTypes.SET_NUMBER_OF_LAYERS:
+      _setNumberOfLayers(action.numberOfLayers);
       _generateLayout();
       Layout.emitChange();
       break;

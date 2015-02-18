@@ -30,6 +30,12 @@ const Actions = {
       type: LayoutActionTypes.SET_HEIGHT,
       height: newHeight
     });
+  },
+  setNumberOfLayers: function(newNumberOfLayers) {
+    AppDispatcher.handleViewAction({
+      type: LayoutActionTypes.SET_NUMBER_OF_LAYERS,
+      numberOfLayers: newNumberOfLayers
+    });
   }
 }
 
