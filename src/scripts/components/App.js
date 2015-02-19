@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
-import Grid from './Grid';
+import GridContainer from './GridContainer';
 import Editor from './Editor';
 import History from './History';
 
@@ -12,7 +12,7 @@ const App = React.createClass({
         <section className="container">
           <section className="workspace">
             <Editor initialColor="#007E90"/>
-            <Grid />
+            <GridContainer />
           </section>
           <History />
         </section>
