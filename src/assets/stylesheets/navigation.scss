@@ -2,21 +2,29 @@ $nav-background: #121212;
 $nav-color: #fff;
 
 .navigation {
+  @include outer-container;
+  @include display(flex);
+  justify-content: space-between;
   background-color: $nav-background;
   padding: 1em;
   margin-bottom: 1em;
-  @include outer-container;
 
   h1 {
-    @include span-columns(2);
     margin: 0;
     color: $nav-color;
+    flex-grow: 1;
   }
 
   .login, .user {
     @include display(flex);
     align-items: center;
     justify-content: flex-end;
+    flex-grow: 3;
+    height: 1.5em;
+
+    button {
+      font-size: 0.8em;
+    }
 
     img {
       height: 1.5em;

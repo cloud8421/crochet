@@ -21,7 +21,7 @@ const Navigation = React.createClass({
   },
   render (){
     let loginLink = <div className="login">
-      <a onClick={this.loginWithFacebook}>Login with Facebook</a>
+      <button onClick={this.loginWithFacebook}>Login with Facebook</button>
     </div>
     let user = this.state.user;
     return (
