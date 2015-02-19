@@ -4,6 +4,7 @@
   "description": "A React/Flux app generate by RF, powered with JavaScript-6to5",
   "main": "build/bundle.js",
   "dependencies": {
+    "firebase": "^2.2.0",
     "flux": "^2.0.1",
     "immutable": "^3.6.2",
     "lodash": "*",
