@@ -22,12 +22,21 @@ const GridContainer = React.createClass({
     this.setState(getState());
   },
   render: function() {
-    return (
-      <Grid colors={this.state.colors}
-            layout={this.state.layout}
-            width={this.state.width}
-            numberOfLayers={this.state.numberOfLayers} />
-    )
+    let result;
+    if (this.state.numberOfLayers > this.state.colors.size) {
+      return (
+        <div className="notice">
+          <p>You need to add more colours</p>
+        </div>
+      )
+    } else {
+      return (
+        <Grid colors={this.state.colors}
+              layout={this.state.layout}
+              width={this.state.width}
+              numberOfLayers={this.state.numberOfLayers} />
+      )
+    }
   }
 });
 
