@@ -6,7 +6,7 @@ import ColorStore from '../stores/Color';
 import LayoutStore from '../stores/Layout';
 import ProjectStore from '../stores/Project';
 
-getState = function() {
+let getState = function() {
   return {
     width: LayoutStore.getWidth(),
     height: LayoutStore.getHeight(),

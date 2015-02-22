@@ -7,7 +7,7 @@ let status = new Immutable.Map({
   colorBeingEdited: null
 });
 
-_setColorBeingEdited = function(color) {
+let _setColorBeingEdited = function(color) {
   status = status.set('colorBeingEdited', color);
 }
 

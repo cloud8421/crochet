@@ -15,7 +15,7 @@ let layouts = Immutable.List([]);
 let pageNumber = 1;
 let page = Immutable.List([]);
 
-_saveLayout = function() {
+let _saveLayout = function() {
   let newLayout = new LayoutRecord({
     layout: LayoutStore.getLayout(),
     width: LayoutStore.getWidth(),
@@ -27,15 +27,15 @@ _saveLayout = function() {
   pageNumber = _pageNumbers().last();
 }
 
-_setPageNumber = function(newPageNumber) {
+let _setPageNumber = function(newPageNumber) {
   pageNumber = newPageNumber;
 }
 
-_pageNumbers = function() {
+let _pageNumbers = function() {
   return _paginated().keySeq();
 }
 
-_paginated = function() {
+let _paginated = function() {
   return Paginator.paginate(layouts, PAGE_SIZE);
 }
 
