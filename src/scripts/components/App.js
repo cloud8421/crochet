@@ -3,6 +3,7 @@ import Navigation from './Navigation';
 import GridContainer from './GridContainer';
 import Editor from './Editor';
 import History from './History';
+import Sync from '../stores/Sync';
 
 const App = React.createClass({
   render (){
