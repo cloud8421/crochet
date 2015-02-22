@@ -1,20 +1,24 @@
 import React from 'react';
 import Colors from './editor/Colors';
 import LayoutActions from '../actions/LayoutActions';
+import ProjectActions from '../actions/ProjectActions';
 import ColorStore from '../stores/Color';
 import LayoutStore from '../stores/Layout';
+import ProjectStore from '../stores/Project';
 
 getState = function() {
   return {
     width: LayoutStore.getWidth(),
     height: LayoutStore.getHeight(),
-    numberOfLayers: LayoutStore.getNumberOfLayers()
+    numberOfLayers: LayoutStore.getNumberOfLayers(),
+    name: ProjectStore.getName()
   }
 }
 
 const Editor = React.createClass({
   getInitialState: getState,
   componentDidMount() {
+    ProjectStore.addChangeListener(this._onChange);
     LayoutStore.addChangeListener(this._onChange);
   },
   _onChange() {
@@ -23,6 +27,10 @@ const Editor = React.createClass({
   render (){
     return (
       <section className="editor">
+        <div className="name-control">
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" value={this.state.name} onChange={this.handleNameChange} />
+        </div>
         <h2>Dimensions</h2>
         <div className="layout-controls">
           <div className="width-control">
@@ -43,6 +51,9 @@ const Editor = React.createClass({
         <Colors />
       </section>
     );
+  },
+  handleNameChange: function(event) {
+    ProjectActions.setName(event.target.value);
   },
   handleWidthChange: function(event) {
     LayoutActions.setWidth(event.target.value);
