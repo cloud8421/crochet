@@ -1,7 +1,7 @@
 {
   "name": "crochet",
   "version": "0.0.0",
-  "description": "A React/Flux app generate by RF, powered with JavaScript-6to5",
+  "description": "A React/Flux app generate by RF, powered with Babel/Webpack",
   "main": "build/bundle.js",
   "dependencies": {
     "firebase": "^2.2.0",
@@ -16,8 +16,8 @@
     "react-simple-colorpicker": "^1.0.1"
   },
   "devDependencies": {
-    "6to5-jest": "*",
-    "6to5-loader": "*",
+    "babel-jest": "*",
+    "babel-loader": "*",
     "css-loader": "*",
     "file-loader": "*",
     "jest-cli": "*",
