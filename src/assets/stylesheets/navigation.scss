@@ -15,11 +15,29 @@ $nav-color: #fff;
     flex-grow: 1;
   }
 
+  nav {
+    flex-grow: 5;
+    line-height: 1.2em;
+    padding: 0.1em;
+
+    li {
+      display: inline-block;
+      margin-right: 1em;
+
+      a {
+        color: darken($nav-color, 10%);
+        &:hover {
+          color: darken($nav-color, 20%);
+        }
+      }
+    }
+  }
+
   .login, .user {
     @include display(flex);
     align-items: center;
     justify-content: flex-end;
-    flex-grow: 3;
+    flex-grow: 5;
     height: 1.5em;
 
     button {

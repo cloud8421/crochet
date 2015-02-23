@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Fbase from '../stores/Fbase';
 
 let userBar = function(name, avatar) {
@@ -18,6 +19,17 @@ let loginLink = function(clickCb) {
   )
 }
 
+let navLinks = function() {
+  return (
+    <nav className="main-nav">
+      <ul>
+        <li><a href="#">All projects</a></li>
+        <li><Link to="new-project">Add new</Link></li>
+      </ul>
+    </nav>
+  )
+}
+
 const Navigation = React.createClass({
   getInitialState (){
     return {
@@ -32,6 +44,7 @@ const Navigation = React.createClass({
     return (
       <header role="banner" className="navigation">
         <h1>Crochet</h1>
+        {navLinks()}
         {user.name ? userBar(user.name, user.avatar) : loginLink(this.loginWithFacebook)}
       </header>
     )
