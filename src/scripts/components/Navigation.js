@@ -10,6 +10,14 @@ let userBar = function(name, avatar) {
   )
 }
 
+let loginLink = function(clickCb) {
+  return (
+    <div className="login">
+      <button onClick={clickCb}>Login with Facebook</button>
+    </div>
+  )
+}
+
 const Navigation = React.createClass({
   getInitialState (){
     return {
@@ -20,14 +28,11 @@ const Navigation = React.createClass({
     }
   },
   render (){
-    let loginLink = <div className="login">
-      <button onClick={this.loginWithFacebook}>Login with Facebook</button>
-    </div>
     let user = this.state.user;
     return (
       <header role="banner" className="navigation">
         <h1>Crochet</h1>
-        {user.name ? userBar(user.name, user.avatar) : loginLink}
+        {user.name ? userBar(user.name, user.avatar) : loginLink(this.loginWithFacebook)}
       </header>
     )
   },
