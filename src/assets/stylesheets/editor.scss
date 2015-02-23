@@ -9,6 +9,14 @@
   align-items: baseline;
 }
 
+.name-control {
+  @include span-columns(12);
+
+  input {
+    @include span-columns(6);
+  }
+}
+
 .width-control, .height-control, .number-of-layers-control {
   @include span-columns(3);
   @include display(flex);
