@@ -32,7 +32,7 @@
   "scripts": {
     "dev": "webpack-dev-server --colors --content-base ./build",
     "test": "jest",
-    "build": "webpack --config webpack.config.js --progress --profile --colors"
+    "build": "webpack --config webpack.config-prod.js --progress --profile --colors -p"
   },
   "author": "",
   "license": "MIT",
