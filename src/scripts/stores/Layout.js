@@ -115,6 +115,7 @@ Layout.dispatchToken = AppDispatcher.register(function(payload) {
       _setHeight(action.layout.height);
       _setWidth(action.layout.width);
       _setLayout(action.layout.layout);
+      _setNumberOfLayers(action.layout.numberOfLayers);
       Layout.emitChange();
       break;
     default:

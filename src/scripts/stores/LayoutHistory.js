@@ -20,7 +20,8 @@ let _saveLayout = function() {
     layout: LayoutStore.getLayout(),
     width: LayoutStore.getWidth(),
     height: LayoutStore.getHeight(),
-    colors: ColorStore.getColors()
+    colors: ColorStore.getColors(),
+    numberOfLayers: LayoutStore.getNumberOfLayers()
   });
 
   layouts = layouts.push(newLayout);
