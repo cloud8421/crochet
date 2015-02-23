@@ -33,7 +33,6 @@ let _weightedList = function() {
          })
          .valueSeq()
          .flatten()
-         .toJSON()
 }
 
 let _generateLayout = function() {
@@ -47,8 +46,6 @@ let _generateLayout = function() {
     let randomizedCombination = _.sample(ColorsRange.toArray(), numberOfLayers);
     layout = layout.push(Immutable.List(randomizedCombination));
   })
-
-  console.log(_weightedList());
 }
 
 let _setWidth = function(newWidth) {
