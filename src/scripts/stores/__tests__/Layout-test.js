@@ -4,17 +4,17 @@ import LayoutStore from '../Layout';
 import ColorActions from '../../actions/ColorActions';
 import LayoutActions from '../../actions/LayoutActions';
 
-describe('Layout store', function() {
-  beforeEach(function() {
+describe('Layout store', () => {
+  beforeEach(() => {
     LayoutActions.clearLayout();
   });
 
-  it('starts empty', function() {
+  it('starts empty', () => {
     expect(LayoutStore.getLayout().size).toEqual(0);
   });
 
-  describe('generate a layout', function() {
-    beforeEach(function() {
+  describe('generate a layout', () => {
+    beforeEach(() => {
       ColorActions.clearColors();
       ColorActions.addColor('#ffffff');
       ColorActions.addColor('#cccccc');
@@ -24,11 +24,11 @@ describe('Layout store', function() {
       LayoutActions.generateLayout();
     });
 
-    it('can generate a layout with 9 squares', function() {
+    it('can generate a layout with 9 squares', () => {
       expect(LayoutStore.getLayout().size).toEqual(9);
     });
 
-    it('every square has 3 colors', function() {
+    it('every square has 3 colors', () => {
       let firstCombination = LayoutStore.getLayout().first();
       expect(firstCombination.size).toEqual(3);
     });

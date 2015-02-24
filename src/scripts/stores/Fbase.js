@@ -7,7 +7,7 @@ class Fbase {
     this.ref = new Firebase(FIREBASE_URL);
   }
   auth(successCb, errorCb) {
-    this.ref.authWithOAuthPopup("facebook", function(error, authData) {
+    this.ref.authWithOAuthPopup("facebook", (error, authData) => {
       if (error) {
         errorCb(error);
       } else {

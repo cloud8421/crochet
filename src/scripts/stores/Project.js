@@ -5,7 +5,7 @@ import ProjectActionTypes from "../constants/ProjectConstants";
 
 let name = 'My new project';
 
-let _setName = function(newName) {
+let _setName = (newName) => {
   name = newName;
 }
 
@@ -17,7 +17,7 @@ class _Project extends BaseStore {
 
 const Project = new _Project();
 
-Project.dispatchToken = AppDispatcher.register(function(payload) {
+Project.dispatchToken = AppDispatcher.register(payload => {
   let action = payload.action;
 
   switch (action.type) {

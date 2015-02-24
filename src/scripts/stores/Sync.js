@@ -2,7 +2,7 @@ import BaseStore from "./_base";
 import LayoutHistoryStore from "./LayoutHistory";
 import ProjectStore from "./Project";
 
-let _sync = function() {
+let _sync = () => {
   let payload = {
     name: ProjectStore.getName(),
     layouts: LayoutHistoryStore.getLayouts().toJSON()

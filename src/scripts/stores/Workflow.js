@@ -7,7 +7,7 @@ let status = new Immutable.Map({
   colorBeingEdited: null
 });
 
-let _setColorBeingEdited = function(color) {
+let _setColorBeingEdited = (color) => {
   status = status.set('colorBeingEdited', color);
 }
 
@@ -19,7 +19,7 @@ class _Workflow extends BaseStore {
 
 const Workflow = new _Workflow();
 
-Workflow.dispatchToken = AppDispatcher.register(function(payload) {
+Workflow.dispatchToken = AppDispatcher.register(payload => {
   let action = payload.action;
 
   switch (action.type) {

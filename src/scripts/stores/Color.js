@@ -4,7 +4,7 @@ import AppDispatcher from "../dispatcher/AppDispatcher";
 import ColorActionTypes from "../constants/ColorConstants";
 import LayoutActionTypes from "../constants/LayoutConstants";
 
-let _generateRandomHex = function() {
+let _generateRandomHex = () => {
   return '#'+Math.floor(Math.random()*16777215).toString(16);
 }
 
@@ -12,29 +12,29 @@ let colors = new Immutable.List([
   _generateRandomHex()
 ]);
 
-let _addColor = function(color) {
+let _addColor = (color) => {
   if (!colors.contains(color)) {
     colors = colors.push(color);
   }
 }
 
-let _replaceColor = function(oldColor, newColor) {
+let _replaceColor = (oldColor, newColor) => {
   let oldColorIndex = colors.indexOf(oldColor);
-  colors = colors.update(oldColorIndex, function(_old) {
+  colors = colors.update(oldColorIndex, _old => {
     return newColor;
   });
 }
 
-let _removeColor = function(color) {
+let _removeColor = (color) => {
   let colorIndex = colors.indexOf(color);
   colors = colors.delete(colorIndex);
 }
 
-let _clearColors = function() {
+let _clearColors = () => {
   colors = colors.clear();
 }
 
-let _resetColors = function(newColors) {
+let _resetColors = (newColors) => {
   colors = newColors;
 }
 
@@ -49,7 +49,7 @@ class _Color extends BaseStore {
 
 const Color = new _Color();
 
-Color.dispatchToken = AppDispatcher.register(function(payload) {
+Color.dispatchToken = AppDispatcher.register(payload => {
   let action = payload.action;
 
   switch (action.type) {

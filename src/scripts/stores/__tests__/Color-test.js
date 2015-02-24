@@ -3,28 +3,28 @@ jest.autoMockOff();
 import ColorStore from '../Color';
 import ColorActions from '../../actions/ColorActions';
 
-describe('Color store', function() {
-  beforeEach(function() {
+describe('Color store', () => {
+  beforeEach(() => {
     ColorActions.clearColors();
   });
 
-  it('starts empty', function() {
+  it('starts empty', () => {
     expect(ColorStore.getColors().size).toEqual(0);
   });
 
-  it('can add a color', function() {
+  it('can add a color', () => {
     ColorActions.addColor('#ffffff');
     expect(ColorStore.getColors().size).toEqual(1);
     expect(ColorStore.getColors().first()).toEqual('#ffffff');
   });
 
-  it('cannot add the same color twice', function() {
+  it('cannot add the same color twice', () => {
     ColorActions.addColor('#ffffff');
     ColorActions.addColor('#ffffff');
     expect(ColorStore.getColors().size).toEqual(1);
   });
 
-  it('can replace a color', function() {
+  it('can replace a color', () => {
     ColorActions.addColor('#ffffff');
     ColorActions.addColor('#cccccc');
     ColorActions.addColor('#eeeeee');

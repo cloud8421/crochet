@@ -14,11 +14,11 @@ let width = DEFAULT_WIDTH;
 let height = DEFAULT_HEIGHT;
 let numberOfLayers = DEFAULT_NUMBER_OF_LAYERS;
 
-let _clearLayout = function() {
+let _clearLayout = () => {
   layout = layout.clear();
 }
 
-let _weightedList = function() {
+let _weightedList = () => {
   let colorsFrequency = layout
                         .flatten()
                         .countBy(x => x);
@@ -35,32 +35,32 @@ let _weightedList = function() {
          .flatten()
 }
 
-let _generateLayout = function() {
+let _generateLayout = () => {
   _clearLayout();
 
   let squaresCount = width * height;
   let colorsCount = ColorStore.getColors().size;
   let ColorsRange = Immutable.Range(0, colorsCount);
 
-  _.times(squaresCount, function() {
+  _.times(squaresCount, () => {
     let randomizedCombination = _.sample(ColorsRange.toArray(), numberOfLayers);
     layout = layout.push(Immutable.List(randomizedCombination));
   })
 }
 
-let _setWidth = function(newWidth) {
+let _setWidth = (newWidth) => {
   width = newWidth;
 }
 
-let _setHeight = function(newHeight) {
+let _setHeight = (newHeight) => {
   height = newHeight;
 }
 
-let _setLayout = function(newLayout) {
+let _setLayout = (newLayout) => {
   layout = newLayout;
 }
 
-let _setNumberOfLayers = function(newNumberOfLayers) {
+let _setNumberOfLayers = (newNumberOfLayers) => {
   numberOfLayers = newNumberOfLayers;
 }
 
@@ -81,7 +81,7 @@ class _Layout extends BaseStore {
 
 const Layout = new _Layout();
 
-Layout.dispatchToken = AppDispatcher.register(function(payload) {
+Layout.dispatchToken = AppDispatcher.register(payload => {
   let action = payload.action;
 
   switch (action.type) {
