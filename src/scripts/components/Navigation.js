@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Fbase from '../stores/Fbase';
+import ProfileStore from '../stores/Profile';
+import ProfileActions from '../actions/ProfileActions';
 
 let userBar = function(name, avatar) {
   return (
@@ -30,14 +32,19 @@ let navLinks = function() {
   )
 }
 
+let getState = function() {
+  return {
+    user: ProfileStore.getUser()
+  }
+}
+
 const Navigation = React.createClass({
-  getInitialState (){
-    return {
-      user: {
-        name: null,
-        avatar: null
-      }
-    }
+  getInitialState: getState,
+  componentDidMount() {
+    ProfileStore.addChangeListener(this._onChange);
+  },
+  _onChange() {
+    this.setState(getState());
   },
   render (){
     let user = this.state.user;
@@ -52,13 +59,12 @@ const Navigation = React.createClass({
   loginWithFacebook() {
     let success = function(data) {
       let profile = data.facebook.cachedUserProfile;
-      this.setState({
-        user: {
-          name: profile.name,
-          avatar: profile.picture.data.url
-        }
+      ProfileActions.setUser({
+        uid: data.uid,
+        name: profile.name,
+        avatar: profile.picture.data.url
       });
-    }.bind(this);
+    };
     let damn = function(error) { console.error(error) };
     Fbase.auth(success, damn);
   }
