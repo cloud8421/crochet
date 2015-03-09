@@ -2,15 +2,12 @@ import Immutable from 'immutable';
 import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import ProfileActionTypes from "../constants/ProfileConstants";
+import UserRecord from '../records/user';
 
-let user = {
-  uid: null,
-  name: null,
-  avatar: null
-};
+let user = new UserRecord();
 
 let setUser = function(userData) {
-  user = userData;
+  user = new UserRecord(userData);
 }
 
 class _Profile extends BaseStore {
