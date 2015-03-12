@@ -10,6 +10,7 @@ import LayoutRecord from "../records/layout";
 import Paginator from '../lib/paginator';
 
 const PAGE_SIZE = 5;
+const MAX_HISTORY_SIZE = 50;
 
 let layouts = Immutable.List([]);
 let pageNumber = 1;
@@ -24,7 +25,10 @@ let _saveLayout = () => {
     numberOfLayers: LayoutStore.getNumberOfLayers()
   });
 
-  layouts = layouts.push(newLayout);
+  layouts = layouts
+            .takeLast(MAX_HISTORY_SIZE - 1)
+            .push(newLayout);
+
   pageNumber = _pageNumbers().last();
 }
 
