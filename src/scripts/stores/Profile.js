@@ -3,10 +3,18 @@ import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import ProfileActionTypes from "../constants/ProfileConstants";
 import UserRecord from '../records/user';
+import Session from '../lib/session';
 
-let user = new UserRecord();
+let initialData = {};
+
+if (Session.get('user')) {
+  initialData = Session.get('user');
+}
+
+let user = new UserRecord(initialData);
 
 let setUser = function(userData) {
+  Session.set('user', userData);
   user = new UserRecord(userData);
 }
 
