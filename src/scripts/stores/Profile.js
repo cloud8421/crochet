@@ -4,6 +4,7 @@ import AppDispatcher from "../dispatcher/AppDispatcher";
 import ProfileActionTypes from "../constants/ProfileConstants";
 import UserRecord from '../records/user';
 import Session from '../lib/session';
+import Fbase from './Fbase';
 
 let initialData = {};
 
@@ -14,6 +15,11 @@ if (Session.get('user')) {
 let user = new UserRecord(initialData);
 
 let setUser = function(userData) {
+  Fbase.userExists(userData.uid, function(exists) {
+    if (!exists) {
+      Fbase.createUser(userData);
+    }
+  });
   Session.set('user', userData);
   user = new UserRecord(userData);
 }

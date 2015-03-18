@@ -15,6 +15,16 @@ class Fbase {
       }
     });
   }
+  userExists(userId, cb) {
+    let ref = this.ref.child('users');
+    ref.child(userId).once('value', function(snapshot) {
+      cb(!!snapshot.val());
+    });
+  }
+  createUser(userData) {
+    let ref = this.ref.child('users');
+    ref.child(userData.uid).set(userData);
+  }
 }
 
 export default new Fbase();
