@@ -14,7 +14,7 @@ const Login = React.createClass({
     let success = function(data) {
       let profile = data.facebook.cachedUserProfile;
       ProfileActions.setUser({
-        uid: data.uid,
+        uid: data.facebook.id,
         name: profile.name,
         avatar: profile.picture.data.url
       });

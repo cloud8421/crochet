@@ -6,7 +6,7 @@ const NavLinks = React.createClass({
     return (
       <nav className="main-nav">
         <ul>
-          <li><a href="#">All projects</a></li>
+          <li><Link to="projects-list">All projects</Link></li>
           <li><Link to="new-project">Add new</Link></li>
         </ul>
       </nav>

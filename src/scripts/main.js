@@ -8,6 +8,7 @@ import Router from 'react-router';
 
 import App from './components/App';
 import NewProject from './components/NewProject';
+import ProjectsList from './components/ProjectsList';
 
 const Route = Router.Route;
 const DefaultRoute = Router.DefaultRoute;
@@ -16,6 +17,7 @@ let routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={NewProject} />
     <Route name="new-project" handler={NewProject} path="new-project" />
+    <Route name="projects-list" handler={ProjectsList} path="projects" />
   </Route>
 );
 
