@@ -29,6 +29,14 @@ let unsetUser = function() {
   user = new UserRecord(initialData);
 }
 
+let setProjects = function(uid) {
+  Fbase.getProjects(uid, function(projects) {
+    if (projects) {
+      user = user.set('projects', new Immutable.List(projects));
+    }
+  });
+}
+
 class _Profile extends BaseStore {
   getUser() {
     return user;
@@ -46,6 +54,7 @@ Profile.dispatchToken = AppDispatcher.register(function(payload) {
   switch (action.type) {
     case ProfileActionTypes.SET_USER:
       setUser(action.userData);
+      setProjects(action.userData.uid);
       Profile.emitChange();
       break;
     case ProfileActionTypes.UNSET_USER:

@@ -25,6 +25,12 @@ class Fbase {
     let ref = this.ref.child('users');
     ref.child(userData.uid).set(userData);
   }
+  getProjects(userId, cb) {
+    let ref = this.ref.child('projects');
+    ref.child(userId).once('value', function(projects) {
+      cb(projects.val());
+    });
+  }
 }
 
 export default new Fbase();
