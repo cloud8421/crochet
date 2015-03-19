@@ -15,7 +15,7 @@ const DefaultRoute = Router.DefaultRoute;
 
 let routes = (
   <Route handler={App} path="/">
-    <DefaultRoute handler={NewProject} />
+    <DefaultRoute handler={ProjectsList} />
     <Route name="new-project" handler={NewProject} path="new-project" />
     <Route name="projects-list" handler={ProjectsList} path="projects" />
   </Route>

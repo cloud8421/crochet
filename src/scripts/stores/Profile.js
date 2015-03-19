@@ -33,6 +33,9 @@ class _Profile extends BaseStore {
   getUser() {
     return user;
   }
+  getProjects() {
+    return user.projects;
+  }
 }
 
 const Profile = new _Profile();
