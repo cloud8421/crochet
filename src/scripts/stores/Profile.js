@@ -15,8 +15,8 @@ if (Session.get('user')) {
 let user = new UserRecord(initialData);
 
 let setUser = function(userData) {
-  Fbase.userExists(userData.uid, function(exists) {
-    if (!exists) {
+  Fbase.userExists(userData.uid, function(user) {
+    if (!user) {
       Fbase.createUser(userData);
     }
   });

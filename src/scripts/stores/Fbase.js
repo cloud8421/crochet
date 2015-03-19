@@ -18,7 +18,7 @@ class Fbase {
   userExists(userId, cb) {
     let ref = this.ref.child('users');
     ref.child(userId).once('value', function(snapshot) {
-      cb(!!snapshot.val());
+      cb(snapshot.val());
     });
   }
   createUser(userData) {
