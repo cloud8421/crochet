@@ -24,6 +24,11 @@ let setUser = function(userData) {
   user = new UserRecord(userData);
 }
 
+let unsetUser = function() {
+  Session.clear();
+  user = new UserRecord(initialData);
+}
+
 class _Profile extends BaseStore {
   getUser() {
     return user;
@@ -38,6 +43,10 @@ Profile.dispatchToken = AppDispatcher.register(function(payload) {
   switch (action.type) {
     case ProfileActionTypes.SET_USER:
       setUser(action.userData);
+      Profile.emitChange();
+      break;
+    case ProfileActionTypes.UNSET_USER:
+      unsetUser();
       Profile.emitChange();
       break;
     default:

@@ -7,6 +7,11 @@ const Actions = {
       type: ProfileActionTypes.SET_USER,
       userData: userData
     });
+  },
+  unsetUser: function() {
+    AppDispatcher.handleViewAction({
+      type: ProfileActionTypes.UNSET_USER
+    });
   }
 }
 
