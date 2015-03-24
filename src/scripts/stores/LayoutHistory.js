@@ -2,6 +2,7 @@ import Immutable from "immutable";
 import BaseStore from "./_base";
 import LayoutStore from "./Layout";
 import ColorStore from "./Color";
+import ProjectStore from "./Project";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import LayoutActionTypes from "../constants/LayoutConstants";
 import ColorActionTypes from "../constants/ColorConstants";
@@ -10,9 +11,7 @@ import LayoutRecord from "../records/layout";
 import Paginator from '../lib/paginator';
 
 const PAGE_SIZE = 5;
-const MAX_HISTORY_SIZE = 50;
 
-let layouts = Immutable.List([]);
 let pageNumber = 1;
 let page = Immutable.List([]);
 
@@ -25,9 +24,7 @@ let _saveLayout = () => {
     numberOfLayers: LayoutStore.getNumberOfLayers()
   });
 
-  layouts = layouts
-            .takeLast(MAX_HISTORY_SIZE - 1)
-            .push(newLayout);
+  ProjectStore.addLayout(newLayout);
 
   pageNumber = _pageNumbers().last();
 }
@@ -41,12 +38,12 @@ let _pageNumbers = () => {
 }
 
 let _paginated = () => {
-  return Paginator.paginate(layouts, PAGE_SIZE);
+  return Paginator.paginate(ProjectStore.getLayouts(), PAGE_SIZE);
 }
 
 class _LayoutHistory extends BaseStore {
   getLayouts() {
-    return layouts;
+    return ProjectStore.getLayouts();
   }
   getPage() {
     return _paginated().get(pageNumber);
