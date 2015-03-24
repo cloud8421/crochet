@@ -1,17 +1,17 @@
-import Immutable from 'immutable';
+import ProjectRecord from '../records/project';
 import BaseStore from "./_base";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import ProjectActionTypes from "../constants/ProjectConstants";
 
-let name = 'My new project';
+let project = new ProjectRecord();
 
 let _setName = (newName) => {
-  name = newName;
+  project = project.set('name', newName);
 }
 
 class _Project extends BaseStore {
   getName() {
-    return name;
+    return project.name;
   }
 }
 
